@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+
+    <!-- google fonts link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double+Ink:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <!-- google icon -->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-nunito static">
+    <!-- navbar -->
+    <nav class="absolute bg-white w-full">
+      <div class="container px-4 mx-auto py-4 flex justify-between items-end">
+        <div class="logo">
+          <div class="flex flex-row gap-3 items-center">
+            <img src="../assets/Vector.png" alt="" />
+            <h1 class="font-bold font-nunito text-2xl">Aero Nova</h1>
+          </div>
+        </div>
+
+        <div class="nav-links flex gap-8 items-center text-mist-500">
+          <p>Flights</p>
+          <p>Hotels</p>
+          <p>Packages</p>
+          <p>Sign In</p>
+          <p class="bg-purpleblue px-5 py-3 rounded-sm text-white">Sign Up</p>
+        </div>
+      </div>
+    </nav>
+
+    <!-- hero section -->
+    <section
+      class="hero py-40 bg-cover"
+      style="background-image: url('../assets/Hero\ \(1\).png')"
+    >
+      <div
+        class="hero-texts container px-4 mx-auto py-4 flex flex-col items-center"
+      >
+        <div class="w-3/4">
+          <h1
+            class="text-8xl break-all font-extrabold text-center px-40 bg-cover bg-center bg-clip-text text-transparent"
+            style="background-image: url('../assets/Group\ 8.png')"
+          >
+            Its more than just a trip
+          </h1>
+        </div>
+
+        <div class="pt-20">
+          <form action="" class="flex gap-0">
+            <div
+              class="w-full border border-gray-300 px-2 py-0 flex items-center"
+            >
+              <span class="material-symbols-outlined"> flight_takeoff </span>
+              <select
+                id="from-select"
+                class="w-full px-4 focus:outline-none focus:ring-0"
+              >
+                <option value="">From Where?</option>
+                <optgroup label="Africa">
+                  <option>Lagos (LOS)</option>
+                  <option>Accra (ACC)</option>
+                  <option>Nairobi (NBO)</option>
+                  <option>Johannesburg (JNB)</option>
+                  <option>Cairo (CAI)</option>
+                  <option>Gambia</option>
+                  <option>Pretoria</option>
+                </optgroup>
+                <optgroup label="Europe">
+                  <option>London (LHR)</option>
+                  <option>Paris (CDG)</option>
+                  <option>Amsterdam (AMS)</option>
+                  <option>Madrid (MAD)</option>
+                  <option>Frankfurt (FRA)</option>
+                  <option>Paris,FRance</option>
+                </optgroup>
+                <optgroup label="United States">
+                  <option>New York (JFK)</option>
+                  <option>Washington, D.C. (IAD)</option>
+                  <option>Atlanta (ATL)</option>
+                  <option>Miami (MIA)</option>
+                  <option>San Francisco (SFO)</option>
+                </optgroup>
+                <optgroup label="Canada">
+                  <option>Toronto (YYZ)</option>
+                  <option>Vancouver (YVR)</option>
+                  <option>Montreal (YUL)</option>
+                </optgroup>
+                <optgroup label="Caribbean">
+                  <option>Barbados (BGI)</option>
+                  <option>Kingston (KIN)</option>
+                  <option>Nassau (NAS)</option>
+                </optgroup>
+                <optgroup label="Middle East">
+                  <option>Dubai (DXB)</option>
+                  <option>Doha (DOH)</option>
+                  <option>Riyadh (RUH)</option>
+                </optgroup>
+                <optgroup label="Asia-Pacific">
+                  <option>Dubai (DXB)</option>
+                  <option>Singapore (SIN)</option>
+                  <option>Hong Kong (HKG)</option>
+                  <option>Sydney (SYD)</option>
+                  <option>Tokyo (HND)</option>
+                </optgroup>
+                <optgroup label="United Kingdom">
+                  <option>London (LHR)</option>
+                  <option>Manchester (MAN)</option>
+                  <option>Edinburgh (EDI)</option>
+                  <option>Glasgow (GLA)</option>
+                </optgroup>
+              </select>
+            </div>
+            <div
+              class="w-full border border-gray-300 px-2 py-0 focus:ring-2 focus:ring-blue-500 flex items-center"
+            >
+              <span class="material-symbols-outlined"> flight_land </span>
+              <select
+                id="to-select"
+                class="w-full px-4 py-1 focus:outline-none focus:ring-0"
+              >
+                <option value="">To Where?</option>
+                <optgroup label="Africa">
+                  <option>Lagos (LOS)</option>
+                  <option>Accra (ACC)</option>
+                  <option>Nairobi (NBO)</option>
+                  <option>Johannesburg (JNB)</option>
+                  <option>Cairo (CAI)</option>
+                  <option>Gambia</option>
+                  <option>Pretoria</option>
+                </optgroup>
+                <optgroup label="Europe">
+                  <option>London (LHR)</option>
+                  <option>Paris (CDG)</option>
+                  <option>Amsterdam (AMS)</option>
+                  <option>Madrid (MAD)</option>
+                  <option>Frankfurt (FRA)</option>
+                  <option>Paris,FRance</option>
+                </optgroup>
+                <optgroup label="United States">
+                  <option>New York (JFK)</option>
+                  <option>Washington, D.C. (IAD)</option>
+                  <option>Atlanta (ATL)</option>
+                  <option>Miami (MIA)</option>
+                  <option>San Francisco (SFO)</option>
+                </optgroup>
+                <optgroup label="Canada">
+                  <option>Toronto (YYZ)</option>
+                  <option>Vancouver (YVR)</option>
+                  <option>Montreal (YUL)</option>
+                </optgroup>
+                <optgroup label="Caribbean">
+                  <option>Barbados (BGI)</option>
+                  <option>Kingston (KIN)</option>
+                  <option>Nassau (NAS)</option>
+                </optgroup>
+                <optgroup label="Middle East">
+                  <option>Dubai (DXB)</option>
+                  <option>Doha (DOH)</option>
+                  <option>Riyadh (RUH)</option>
+                </optgroup>
+                <optgroup label="Asia-Pacific">
+                  <option>Singapore (SIN)</option>
+                  <option>Hong Kong (HKG)</option>
+                  <option>Sydney (SYD)</option>
+                  <option>Tokyo (HND)</option>
+                </optgroup>
+                <optgroup label="United Kingdom">
+                  <option>London (LHR)</option>
+                  <option>Manchester (MAN)</option>
+                  <option>Edinburgh (EDI)</option>
+                  <option>Glasgow (GLA)</option>
+                </optgroup>
+              </select>
+            </div>
+            <div
+              class="w-full border border-gray-300 px-2 py-0 focus:ring-2 focus:ring-blue-500 flex items-center"
+            >
+              <span class="material-symbols-outlined"> date_range </span>
+              <input
+                class="w-full px-4 py-3 focus:outline-none focus:ring-0"
+                id="dateRange"
+                placeholder="Depart - Return "
+              />
+            </div>
+            <div
+              class="w-full border border-r-0 border-gray-300 px-2 py-0 focus:ring-2 focus:ring-blue-500 flex items-center"
+            >
+              <span class="material-symbols-outlined"> contacts_product </span>
+              <input
+                class="w-full px-4 py-3 focus:outline-none focus:ring-0"
+                id="dateRange"
+                placeholder="1 Adult"
+              />
+            </div>
+            <div>
+              <button
+                class="border rounded-sm text-white bg-purpleblue px-5 py-3"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!--  Trending Flights Section -->
+    <section class="trending min-h-screen bg-white pt-10">
+      <div class="container px-4 md:px-8 lg:px-16 mx-auto py-4">
+        <div>
+          <h1 class="text-3xl mb-2 text-mist-500">
+            Find you next adventure with these
+            <span class="text-purpleblue">flight deals</span>
+          </h1>
+        </div>
+        <div class="flight-cards grid grid-cols-3 gap-10">
+          <div
+            class="w-full h-auto md:h-115 bg-white rounded-xl shadow-lg overflow-hidden mt-4"
+          >
+            <img
+              src="../assets/image.png"
+              alt=""
+              class="w-full h-96 object-cover"
+            />
+            <div class="card-contents p-4 text-gray-400">
+              <div class="flex justify-between">
+                <p>The Bund, <span class="text-purpleblue">Shangai</span></p>
+                <p>$598</p>
+              </div>
+              <p>China's most international city.</p>
+            </div>
+          </div>
+
+          <div
+            class="w-full h-auto md:h-115 bg-white rounded-xl shadow-lg overflow-hidden mt-4"
+          >
+            <img
+              src="../assets/image.png"
+              alt=""
+              class="w-full h-96 object-cover"
+            />
+            <div class="card-contents p-4 text-gray-400">
+              <div class="flex justify-between">
+                <p>The Bund, <span class="text-purpleblue">Shangai</span></p>
+                <p>$598</p>
+              </div>
+              <p>China's most international city.</p>
+            </div>
+          </div>
+
+          <div
+            class="w-full h-auto md:h-115 bg-white rounded-xl shadow-lg overflow-hidden mt-4"
+          >
+            <img
+              src="../assets/image.png"
+              alt=""
+              class="w-full h-96 object-cover"
+            />
+            <div class="card-contents p-4 text-gray-400">
+              <div class="flex justify-between">
+                <p>The Bund, <span class="text-purpleblue">Shangai</span></p>
+                <p>$598</p>
+              </div>
+              <p>China's most international city.</p>
+            </div>
+          </div>
+
+          <div
+            class="w-full h-auto md:h-115 bg-white rounded-xl shadow-lg overflow-hidden m-4 col-span-3"
+          >
+            <img
+              src="../assets/image.png"
+              alt=""
+              class="w-full h-96 object-cover"
+            />
+            <div class="card-contents p-4 text-gray-400">
+              <div class="flex justify-between">
+                <p>The Bund, <span class="text-purpleblue">Shangai</span></p>
+                <p>$598</p>
+              </div>
+              <p>China's most international city.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

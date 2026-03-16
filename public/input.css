@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-purpleblue: #605dec;
+  --font-inter: "Inter", san-serif;
+  --font-nunito: "Nunito Sans", sans-serif;
+  --font-bitcount: "Bitcount Grid Double Ink", system-ui;
+}
