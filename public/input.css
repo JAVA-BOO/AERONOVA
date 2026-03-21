@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* colors */
   --color-purpleblue: #605dec;
   --color-on-background: #191c1e;
   --color-inverse-surface: #2d3133;
@@ -58,9 +57,4 @@
   --font-headline: [ "Plus Jakarta Sans"];
   --font-body: [ "Manrope"];
   --font-label: [ "Manrope"];
-  /*  */
-  /* --radius-DEFAULT: "0.5rem";
-  --radius-lg: "0.75rem";
-  --radius-xl: "1rem";
-  --radius-full: "9999px"; */
 }
