@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyWay Travels - Your Digital Concierge</title>
     <link href="./output.css" rel="stylesheet" />
 
     <!-- google fonts link -->
@@ -12,288 +13,793 @@
       href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double+Ink:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
     <!-- google icon -->
 
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
+
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        vertical-align: middle;
+      }
+      .glass-nav {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+    </style>
   </head>
   <body class="font-nunito static">
     <!-- navbar -->
-    <nav class="absolute bg-white w-full">
-      <div class="container px-4 mx-auto py-4 flex justify-between items-end">
-        <div class="logo">
-          <div class="flex flex-row gap-3 items-center">
-            <img src="./images/Vector.png" alt="" />
-            <h1 class="font-bold font-nunito text-2xl">Aero Nova</h1>
+    <nav
+      class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none font-['Plus_Jakarta_Sans'] antialiased"
+    >
+      <div
+        class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto"
+      >
+        <div class="flex items-center gap-8">
+          <span
+            class="text-2xl font-bold tracking-tight text-blue-900 dark:text-blue-100"
+            >SkyWay Travels</span
+          >
+          <div class="hidden md:flex gap-6 items-center">
+            <a
+              class="text-blue-700 dark:text-blue-300 font-semibold border-b-2 border-blue-700 dark:border-blue-300 pb-1"
+              href="#"
+              >Explore</a
+            >
+            <a
+              class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+              href="#"
+              >Bookings</a
+            >
+            <a
+              class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+              href="#"
+              >Destinations</a
+            >
+            <a
+              class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+              href="#"
+              >Deals</a
+            >
           </div>
         </div>
-
-        <div class="nav-links flex gap-8 items-center text-mist-500">
-          <p>Flights</p>
-          <p>Hotels</p>
-          <p>Packages</p>
-          <p>Sign In</p>
-          <p class="bg-purpleblue px-5 py-3 rounded-sm text-white">Sign Up</p>
+        <div class="flex items-center gap-4">
+          <button
+            class="text-slate-600 dark:text-slate-400 px-4 py-2 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 rounded-lg transition-all active:scale-95 duration-200"
+          >
+            Login
+          </button>
+          <button
+            class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-semibold shadow-sm hover:bg-primary-container transition-all active:scale-95 duration-200"
+          >
+            Sign Up
+          </button>
         </div>
       </div>
     </nav>
 
     <!-- hero section -->
     <section
-      class="hero py-40 bg-cover"
-      style="background-image: url('./images/Hero\ \(1\).png')"
+      class="relative min-h-[870px] flex items-center px-6 py-20 overflow-hidden"
     >
+      <div class="absolute inset-0 z-0">
+        <img
+          alt="mountains"
+          class="w-full h-full object-cover"
+          data-alt="mountain white"
+          src="./images/skyair.avif"
+        />
+      </div>
       <div
-        class="hero-texts container px-4 mx-auto py-4 flex flex-col items-center"
+        class="relative z-10 max-w-7xl mx-auto w-full flex flex-col items-center"
       >
-        <div class="w-3/4">
+        <div class="max-w-2xl">
           <h1
-            class="text-8xl break-all font-extrabold text-center px-40 bg-cover bg-center bg-clip-text text-transparent"
-            style="background-image: url('./images/Group\ 8.png')"
+            class="font-headline text-5xl md:text-8xl font-extrabold text-white tracking-tight leading-tight mb-6 md:text-center"
           >
-            Its more than just a trip
+            Its more than <span class="text-tertiary-fixed"> just a trip</span>
           </h1>
+          <p class="text-xl text-white/90 mb-10 font-medium max-w-lg">
+            Experience the world through a curated lens. Seamless journeys,
+            unforgettable horizons, and the luxury of time.
+          </p>
         </div>
-
-        <div class="pt-20">
-          <form action="" class="flex gap-0">
-            <div
-              class="w-full border border-gray-300 px-2 py-0 flex items-center"
-            >
-              <span class="material-symbols-outlined"> flight_takeoff </span>
-              <select
-                id="from-select"
-                class="w-full px-4 focus:outline-none focus:ring-0"
+        <!-- High-Impact Search Bar (Bento Style) -->
+        <div
+          class="bg-surface-container-lowest/50 backdrop-blur-xl p-2 rounded-xl shadow-2xl max-w-5xl"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+            <div class="p-4">
+              <label
+                class="block text-[0.6875rem] font-bold text-outline uppercase tracking-wider mb-1"
+                >Origin</label
               >
-                <option value="">From Where?</option>
-                <optgroup label="Africa">
-                  <option>Lagos (LOS)</option>
-                  <option>Accra (ACC)</option>
-                  <option>Nairobi (NBO)</option>
-                  <option>Johannesburg (JNB)</option>
-                  <option>Cairo (CAI)</option>
-                  <option>Gambia</option>
-                  <option>Pretoria</option>
-                </optgroup>
-                <optgroup label="Europe">
-                  <option>London (LHR)</option>
-                  <option>Paris (CDG)</option>
-                  <option>Amsterdam (AMS)</option>
-                  <option>Madrid (MAD)</option>
-                  <option>Frankfurt (FRA)</option>
-                  <option>Paris,FRance</option>
-                </optgroup>
-                <optgroup label="United States">
-                  <option>New York (JFK)</option>
-                  <option>Washington, D.C. (IAD)</option>
-                  <option>Atlanta (ATL)</option>
-                  <option>Miami (MIA)</option>
-                  <option>San Francisco (SFO)</option>
-                </optgroup>
-                <optgroup label="Canada">
-                  <option>Toronto (YYZ)</option>
-                  <option>Vancouver (YVR)</option>
-                  <option>Montreal (YUL)</option>
-                </optgroup>
-                <optgroup label="Caribbean">
-                  <option>Barbados (BGI)</option>
-                  <option>Kingston (KIN)</option>
-                  <option>Nassau (NAS)</option>
-                </optgroup>
-                <optgroup label="Middle East">
-                  <option>Dubai (DXB)</option>
-                  <option>Doha (DOH)</option>
-                  <option>Riyadh (RUH)</option>
-                </optgroup>
-                <optgroup label="Asia-Pacific">
-                  <option>Dubai (DXB)</option>
-                  <option>Singapore (SIN)</option>
-                  <option>Hong Kong (HKG)</option>
-                  <option>Sydney (SYD)</option>
-                  <option>Tokyo (HND)</option>
-                </optgroup>
-                <optgroup label="United Kingdom">
-                  <option>London (LHR)</option>
-                  <option>Manchester (MAN)</option>
-                  <option>Edinburgh (EDI)</option>
-                  <option>Glasgow (GLA)</option>
-                </optgroup>
-              </select>
+              <div class="flex items-center gap-2">
+                <span
+                  class="material-symbols-outlined text-primary"
+                  data-icon="flight_takeoff"
+                  >flight_takeoff</span
+                >
+                <select
+                  id="from-select"
+                  class="w-full px-4 focus:outline-none focus:ring-0"
+                >
+                  <option value="">From Where?</option>
+                  <optgroup label="Africa">
+                    <option>Lagos (LOS)</option>
+                    <option>Accra (ACC)</option>
+                    <option>Nairobi (NBO)</option>
+                    <option>Johannesburg (JNB)</option>
+                    <option>Cairo (CAI)</option>
+                    <option>Gambia</option>
+                    <option>Pretoria</option>
+                  </optgroup>
+                  <optgroup label="Europe">
+                    <option>London (LHR)</option>
+                    <option>Paris (CDG)</option>
+                    <option>Amsterdam (AMS)</option>
+                    <option>Madrid (MAD)</option>
+                    <option>Frankfurt (FRA)</option>
+                    <option>Paris,FRance</option>
+                  </optgroup>
+                  <optgroup label="United States">
+                    <option>New York (JFK)</option>
+                    <option>Washington, D.C. (IAD)</option>
+                    <option>Atlanta (ATL)</option>
+                    <option>Miami (MIA)</option>
+                    <option>San Francisco (SFO)</option>
+                  </optgroup>
+                  <optgroup label="Canada">
+                    <option>Toronto (YYZ)</option>
+                    <option>Vancouver (YVR)</option>
+                    <option>Montreal (YUL)</option>
+                  </optgroup>
+                  <optgroup label="Caribbean">
+                    <option>Barbados (BGI)</option>
+                    <option>Kingston (KIN)</option>
+                    <option>Nassau (NAS)</option>
+                  </optgroup>
+                  <optgroup label="Middle East">
+                    <option>Dubai (DXB)</option>
+                    <option>Doha (DOH)</option>
+                    <option>Riyadh (RUH)</option>
+                  </optgroup>
+                  <optgroup label="Asia-Pacific">
+                    <option>Dubai (DXB)</option>
+                    <option>Singapore (SIN)</option>
+                    <option>Hong Kong (HKG)</option>
+                    <option>Sydney (SYD)</option>
+                    <option>Tokyo (HND)</option>
+                  </optgroup>
+                  <optgroup label="United Kingdom">
+                    <option>London (LHR)</option>
+                    <option>Manchester (MAN)</option>
+                    <option>Edinburgh (EDI)</option>
+                    <option>Glasgow (GLA)</option>
+                  </optgroup>
+                </select>
+              </div>
             </div>
-            <div
-              class="w-full border border-gray-300 px-2 py-0 focus:ring-2 focus:ring-blue-500 flex items-center"
-            >
-              <span class="material-symbols-outlined"> flight_land </span>
-              <select
-                id="to-select"
-                class="w-full px-4 py-1 focus:outline-none focus:ring-0"
+            <div class="p-4">
+              <label
+                class="block text-[0.6875rem] font-bold text-outline uppercase tracking-wider mb-1"
+                >Destination</label
               >
-                <option value="">To Where?</option>
-                <optgroup label="Africa">
-                  <option>Lagos (LOS)</option>
-                  <option>Accra (ACC)</option>
-                  <option>Nairobi (NBO)</option>
-                  <option>Johannesburg (JNB)</option>
-                  <option>Cairo (CAI)</option>
-                  <option>Gambia</option>
-                  <option>Pretoria</option>
-                </optgroup>
-                <optgroup label="Europe">
-                  <option>London (LHR)</option>
-                  <option>Paris (CDG)</option>
-                  <option>Amsterdam (AMS)</option>
-                  <option>Madrid (MAD)</option>
-                  <option>Frankfurt (FRA)</option>
-                  <option>Paris,FRance</option>
-                </optgroup>
-                <optgroup label="United States">
-                  <option>New York (JFK)</option>
-                  <option>Washington, D.C. (IAD)</option>
-                  <option>Atlanta (ATL)</option>
-                  <option>Miami (MIA)</option>
-                  <option>San Francisco (SFO)</option>
-                </optgroup>
-                <optgroup label="Canada">
-                  <option>Toronto (YYZ)</option>
-                  <option>Vancouver (YVR)</option>
-                  <option>Montreal (YUL)</option>
-                </optgroup>
-                <optgroup label="Caribbean">
-                  <option>Barbados (BGI)</option>
-                  <option>Kingston (KIN)</option>
-                  <option>Nassau (NAS)</option>
-                </optgroup>
-                <optgroup label="Middle East">
-                  <option>Dubai (DXB)</option>
-                  <option>Doha (DOH)</option>
-                  <option>Riyadh (RUH)</option>
-                </optgroup>
-                <optgroup label="Asia-Pacific">
-                  <option>Singapore (SIN)</option>
-                  <option>Hong Kong (HKG)</option>
-                  <option>Sydney (SYD)</option>
-                  <option>Tokyo (HND)</option>
-                </optgroup>
-                <optgroup label="United Kingdom">
-                  <option>London (LHR)</option>
-                  <option>Manchester (MAN)</option>
-                  <option>Edinburgh (EDI)</option>
-                  <option>Glasgow (GLA)</option>
-                </optgroup>
-              </select>
+              <div class="flex items-center gap-2">
+                <span
+                  class="material-symbols-outlined text-primary"
+                  data-icon="location_on"
+                  >location_on</span
+                >
+                <select
+                  id="to-select"
+                  class="w-full px-4 py-1 focus:outline-none focus:ring-0"
+                >
+                  <option value="">To Where?</option>
+                  <optgroup label="Africa">
+                    <option>Lagos (LOS)</option>
+                    <option>Accra (ACC)</option>
+                    <option>Nairobi (NBO)</option>
+                    <option>Johannesburg (JNB)</option>
+                    <option>Cairo (CAI)</option>
+                    <option>Gambia</option>
+                    <option>Pretoria</option>
+                  </optgroup>
+                  <optgroup label="Europe">
+                    <option>London (LHR)</option>
+                    <option>Paris (CDG)</option>
+                    <option>Amsterdam (AMS)</option>
+                    <option>Madrid (MAD)</option>
+                    <option>Frankfurt (FRA)</option>
+                    <option>Paris,FRance</option>
+                  </optgroup>
+                  <optgroup label="United States">
+                    <option>New York (JFK)</option>
+                    <option>Washington, D.C. (IAD)</option>
+                    <option>Atlanta (ATL)</option>
+                    <option>Miami (MIA)</option>
+                    <option>San Francisco (SFO)</option>
+                  </optgroup>
+                  <optgroup label="Canada">
+                    <option>Toronto (YYZ)</option>
+                    <option>Vancouver (YVR)</option>
+                    <option>Montreal (YUL)</option>
+                  </optgroup>
+                  <optgroup label="Caribbean">
+                    <option>Barbados (BGI)</option>
+                    <option>Kingston (KIN)</option>
+                    <option>Nassau (NAS)</option>
+                  </optgroup>
+                  <optgroup label="Middle East">
+                    <option>Dubai (DXB)</option>
+                    <option>Doha (DOH)</option>
+                    <option>Riyadh (RUH)</option>
+                  </optgroup>
+                  <optgroup label="Asia-Pacific">
+                    <option>Singapore (SIN)</option>
+                    <option>Hong Kong (HKG)</option>
+                    <option>Sydney (SYD)</option>
+                    <option>Tokyo (HND)</option>
+                  </optgroup>
+                  <optgroup label="United Kingdom">
+                    <option>London (LHR)</option>
+                    <option>Manchester (MAN)</option>
+                    <option>Edinburgh (EDI)</option>
+                    <option>Glasgow (GLA)</option>
+                  </optgroup>
+                </select>
+              </div>
             </div>
-            <div
-              class="w-full border border-gray-300 px-2 py-0 focus:ring-2 focus:ring-blue-500 flex items-center"
-            >
-              <span class="material-symbols-outlined"> date_range </span>
-              <input
-                class="w-full px-4 py-3 focus:outline-none focus:ring-0"
-                id="dateRange"
-                placeholder="Depart - Return "
-              />
+            <div class="p-4">
+              <label
+                class="block text-[0.6875rem] font-bold text-outline uppercase tracking-wider mb-1"
+                >Dates</label
+              >
+              <div class="flex items-center gap-2">
+                <span
+                  class="material-symbols-outlined text-primary"
+                  data-icon="calendar_month"
+                  >calendar_month</span
+                >
+                <input
+                  class="bg-transparent border-none p-0 focus:outline-none focus:ring-0 font-headline font-semibold w-full"
+                  id="dateRange"
+                  placeholder="Depart - Return "
+                  type="text"
+                />
+              </div>
             </div>
-            <div
-              class="w-full border border-r-0 border-gray-300 px-2 py-0 focus:ring-2 focus:ring-blue-500 flex items-center"
-            >
-              <span class="material-symbols-outlined"> contacts_product </span>
-              <input
-                class="w-full px-4 py-3 focus:outline-none focus:ring-0"
-                id="dateRange"
-                placeholder="1 Adult"
-              />
-            </div>
-            <div>
+            <div class="flex gap-2 p-2">
+              <div class="grow p-2">
+                <label
+                  class="block text-[0.6875rem] font-bold text-outline uppercase tracking-wider mb-1"
+                  >Guests</label
+                >
+                <div class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary"
+                    data-icon="person"
+                    >person</span
+                  >
+                  <input
+                    class="bg-transparent border-none p-0 focus:outline-none focus:ring-0 text-on-surface font-headline font-semibold w-full"
+                    placeholder="1 Guest"
+                    type="text"
+                  />
+                </div>
+              </div>
               <button
-                class="border rounded-sm text-white bg-purpleblue px-5 py-3"
+                class="bg-linear-to-br from-primary to-primary-container text-on-primary p-4 rounded-lg flex items-center justify-center transition-transform active:scale-95 shadow-lg"
               >
-                Search
+                <span class="material-symbols-outlined" data-icon="search"
+                  >search</span
+                >
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </section>
-    <!--  Trending Flights Section -->
-    <section class="trending min-h-screen bg-white pt-10">
-      <div class="container px-4 md:px-8 lg:px-16 mx-auto py-4">
+
+    <!-- Featured Destinations -->
+    <section class="featured max-w-7xl mx-auto px-6 py-24" id="featured">
+      <div class="flex justify-between items-end mb-12">
         <div>
-          <h1 class="text-3xl mb-2 text-mist-500">
-            Find you next adventure with these
-            <span class="text-purpleblue">flight deals</span>
-          </h1>
+          <h2
+            class="font-headline text-3xl md:text-4xl font-bold text-primary mb-2"
+          >
+            Curated Escapes
+          </h2>
+          <p class="text-on-surface-variant max-w-md">
+            Handpicked destinations for the discerning traveler seeking more
+            than just a trip.
+          </p>
         </div>
-        <div class="flight-cards grid grid-cols-3 gap-10">
-          <div
-            class="w-full h-auto md:h-115 bg-white rounded-xl shadow-lg overflow-hidden mt-4"
+        <button
+          class="hidden md:flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all"
+        >
+          View All Destinations
+          <span class="material-symbols-outlined" data-icon="arrow_forward"
+            >arrow_forward</span
           >
+        </button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <!-- Large Card -->
+        <div class="md:col-span-7 group cursor-pointer">
+          <div class="relative overflow-hidden rounded-xl h-[500px]">
             <img
-              src="./images/image.png"
-              alt=""
-              class="w-full h-96 object-cover"
+              alt="Tropical island"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              data-alt="barbeach1"
+              src="./images/barbeach1.png"
             />
-            <div class="card-contents p-4 text-gray-400">
-              <div class="flex justify-between">
-                <p>The Bund, <span class="text-purpleblue">Shangai</span></p>
-                <p>$598</p>
-              </div>
-              <p>China's most international city.</p>
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+            ></div>
+            <div class="absolute bottom-8 left-8 text-white">
+              <span
+                class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-[0.6875rem] font-bold uppercase tracking-widest mb-4 inline-block"
+                >Bestseller</span
+              >
+              <h3 class="font-headline text-3xl font-bold">Maldives</h3>
+              <p class="text-white/80">From $1,299</p>
             </div>
           </div>
-
-          <div
-            class="w-full h-auto md:h-115 bg-white rounded-xl shadow-lg overflow-hidden mt-4"
-          >
-            <img
-              src="./images/image2.png"
-              alt=""
-              class="w-full h-96 object-cover"
-            />
-            <div class="card-contents p-4 text-gray-400">
-              <div class="flex justify-between">
-                <p>The Bund, <span class="text-purpleblue">Shangai</span></p>
-                <p>$598</p>
+        </div>
+        <!-- Vertical Stack -->
+        <div class="md:col-span-5 flex flex-col gap-8">
+          <div class="group cursor-pointer">
+            <div class="relative overflow-hidden rounded-xl h-[234px]">
+              <img
+                alt="Venice canals"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                data-alt="barbaeach2"
+                src="./images/barbeach2.png"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+              ></div>
+              <div class="absolute bottom-6 left-6 text-white">
+                <h3 class="font-headline text-xl font-bold">Venice, Italy</h3>
+                <p class="text-white/80">From $849</p>
               </div>
-              <p>China's most international city.</p>
             </div>
           </div>
-
-          <div
-            class="w-full h-auto md:h-115 bg-white rounded-xl shadow-lg overflow-hidden mt-4"
-          >
-            <img
-              src="./images/image3.png"
-              alt=""
-              class="w-full h-96 object-cover"
-            />
-            <div class="card-contents p-4 text-gray-400">
-              <div class="flex justify-between">
-                <p>The Bund, <span class="text-purpleblue">Shangai</span></p>
-                <p>$598</p>
+          <div class="group cursor-pointer">
+            <div class="relative overflow-hidden rounded-xl h-[234px]">
+              <img
+                alt="Kyoto temples"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                data-alt="barbeach3"
+                src="./images/barbeach3.png"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+              ></div>
+              <div class="absolute bottom-6 left-6 text-white">
+                <h3 class="font-headline text-xl font-bold">Kyoto, Japan</h3>
+                <p class="text-white/80">From $1,100</p>
               </div>
-              <p>China's most international city.</p>
-            </div>
-          </div>
-
-          <div
-            class="w-full h-auto md:h-115 bg-white rounded-xl shadow-lg overflow-hidden m-4 col-span-3"
-          >
-            <img
-              src="./images/image4.png"
-              alt=""
-              class="w-full h-96 object-cover"
-            />
-            <div class="card-contents p-4 text-gray-400">
-              <div class="flex justify-between">
-                <p>The Bund, <span class="text-purpleblue">Shangai</span></p>
-                <p>$598</p>
-              </div>
-              <p>China's most international city.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <!-- Why Choose Us-->
+    <section class="choose bg-surface-container-low py-24">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2
+            class="font-headline text-3xl md:text-4xl font-bold text-on-background mb-4"
+          >
+            The SkyWay Experience
+          </h2>
+          <p class="text-on-surface-variant max-w-xl mx-auto">
+            We redefine the journey through meticulous planning and unwavering
+            commitment to your peace of mind.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-surface-container-lowest p-10 rounded-xl transition-all hover:translate-y-[-8px]"
+          >
+            <div
+              class="w-16 h-16 bg-secondary-container/30 rounded-full flex items-center justify-center mb-8"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-3xl"
+                data-icon="verified_user"
+                >verified_user</span
+              >
+            </div>
+            <h3 class="font-headline text-xl font-bold mb-4">
+              Unyielding Trust
+            </h3>
+            <p class="text-on-surface-variant leading-relaxed">
+              Secure bookings and verified partners across 120 countries. Your
+              safety is our standard.
+            </p>
+          </div>
+          <div
+            class="bg-surface-container-lowest p-10 rounded-xl transition-all hover:translate-y-[-8px]"
+          >
+            <div
+              class="w-16 h-16 bg-secondary-container/30 rounded-full flex items-center justify-center mb-8"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-3xl"
+                data-icon="payments"
+                >payments</span
+              >
+            </div>
+            <h3 class="font-headline text-xl font-bold mb-4">Elite Pricing</h3>
+            <p class="text-on-surface-variant leading-relaxed">
+              Exclusive access to premier rates and secret deals negotiated
+              directly with luxury providers.
+            </p>
+          </div>
+          <div
+            class="bg-surface-container-lowest p-10 rounded-xl transition-all hover:translate-y-[-8px]"
+          >
+            <div
+              class="w-16 h-16 bg-secondary-container/30 rounded-full flex items-center justify-center mb-8"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-3xl"
+                data-icon="support_agent"
+                >support_agent</span
+              >
+            </div>
+            <h3 class="font-headline text-xl font-bold mb-4">24/7 Concierge</h3>
+            <p class="text-on-surface-variant leading-relaxed">
+              More than support—a dedicated travel partner available anytime,
+              anywhere in the world.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="max-w-7xl mx-auto px-6 py-24">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+        <div class="relative">
+          <div
+            class="aspect-square rounded-full overflow-hidden border-8 border-surface-container"
+          >
+            <img
+              alt="Happy traveler"
+              class="w-full h-full object-cover"
+              data-alt="Portrait of a smiling traveler against an urban background"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTr03hk_CbqiNSbfE9GSuzLG2O-is9Ivn_8U4H_5eWoPSmaLgpXEv-dCG8DAoxcZwE0X8g8AntQfuof0WyV-amUQzMl9wMSlaEVPoAxbiPxNWStJLfwYvzQQ-2iXwHqgxW5-Uak04vafhDySvGNvRH0GMmgatCr7D9Umj5zNgCXvZq-H_DtJOFQKu95OZ3WXbyImiH37FSWexpTN2OuKgXVIMxTr1updJokI-JPCNP9QaKID6ruZKYs-es5xSCIW8O7rVrJ8CQGgei"
+            />
+          </div>
+          <div
+            class="absolute -bottom-6 -right-6 bg-tertiary text-on-tertiary p-8 rounded-xl shadow-xl max-w-xs"
+          >
+            <span
+              class="material-symbols-outlined text-4xl mb-4"
+              data-icon="format_quote"
+              >format_quote</span
+            >
+            <p class="italic text-lg mb-4">
+              "The attention to detail was unlike anything I've experienced.
+              SkyWay made our honeymoon truly effortless."
+            </p>
+            <p class="font-bold text-sm uppercase tracking-widest">
+              — Ajibade Abdulrahman
+            </p>
+          </div>
+        </div>
+        <div class="space-y-12">
+          <h2 class="font-headline text-4xl font-extrabold text-on-background">
+            Echoes of the <br />Journey
+          </h2>
+          <div class="space-y-8">
+            <div class="flex gap-6 pb-8 border-b border-outline-variant/30">
+              <div class="flex-shrink-0 w-12 h-12 rounded-full overflow-hidden">
+                <img
+                  alt="Traveler avatar"
+                  class="w-full h-full object-cover"
+                  data-alt="Close-up portrait of a satisfied male traveler"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZNyf7Xang-5pL0c-9OUqimghyCI7PIKL-aRw2K7D8e_ilGnwUzGm7KWLCKBExxE0dWESE4hhhpu_sTr-1wpJhb6xy1_UJQ0d0OeyJAZPuQg1xjK_gqqcM8wClxI9iNH1hGLO67uB3rEudCHH33PjQa__MSr0sCZvaoDRczhSWFXTdYIQ5SzGNg6OXa7suFpoKjQ_k2M6hIJTz6jJqt1UuGuki735AzDp5X9eH47ePcHRB6wBeGtZFSLFM_--3tZU0Nihv5Ru4LVKK"
+                />
+              </div>
+              <div>
+                <div class="flex text-tertiary-container mb-2">
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    data-icon="star"
+                    data-weight="fill"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    data-icon="star"
+                    data-weight="fill"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    data-icon="star"
+                    data-weight="fill"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    data-icon="star"
+                    data-weight="fill"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    data-icon="star"
+                    data-weight="fill"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                </div>
+                <p class="text-on-surface-variant mb-2">
+                  "Found a hidden gem hotel in Tokyo that wasn't on any other
+                  booking site. Incredible value."
+                </p>
+                <p class="font-bold text-xs uppercase tracking-tighter">
+                  Cristiano Ronaldo, Footballer
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-6">
+              <div class="flex-shrink-0 w-12 h-12 rounded-full overflow-hidden">
+                <img
+                  alt="Traveler avatar"
+                  class="w-full h-full object-cover"
+                  data-alt="Portrait of a young woman traveler with a bright smile"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmsJNRLvysr82-j3lNDtlmzaPYtX0mXwrKPalsf2XfVS0P3zWKm07H11jvcdvA4JuRlxP5ZUpYnouvSfDH4GRxbzLyBHeuUzHLXARzikiguadmcdNK4Cqniu_fRbo0STY-mpvld9dMnrrFrCvFiuyx4FeVlArjrAytCAQcVxWcb8GcNgwHvt4Pr_kR_bvmRtgIPfA7fywH2PyVOykWQLM09v1fiMfoW0f2IusHHC8oQX37Lhddyd0Ki0yaF67Tbsr7iVv1Qx2Caen4"
+                />
+              </div>
+              <div>
+                <div class="flex text-tertiary-container mb-2">
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    data-icon="star"
+                    data-weight="fill"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    data-icon="star"
+                    data-weight="fill"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    data-icon="star"
+                    data-weight="fill"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    data-icon="star"
+                    data-weight="fill"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    data-icon="star"
+                    data-weight="fill"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                </div>
+                <p class="text-on-surface-variant mb-2">
+                  "Their 24/7 support helped me reschedule a flight in 10
+                  minutes when my initial plan was canceled."
+                </p>
+                <p class="font-bold text-xs uppercase tracking-tighter">
+                  Olasunkanmi Mufeed Olamide, Adventurer
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="max-w-7xl mx-auto px-6 mb-24">
+      <div class="relative rounded-xl overflow-hidden py-24 px-12 text-center">
+        <img
+          alt="airplane window scenery"
+          class="absolute inset-0 w-full h-full object-cover"
+          data-alt="some fucking airplane window"
+          src="https://plus.unsplash.com/premium_photo-1664302215418-5a26e27f7b44?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8amV0JTIwc2NlbmVyeXxlbnwwfHwwfHx8MA%3D%3D"
+        />
+        <div class="absolute inset-0 bg-primary/60 backdrop-blur-[2px]"></div>
+        <div class="relative z-10">
+          <h2
+            class="font-headline text-4xl md:text-5xl font-extrabold text-white mb-8"
+          >
+            Ready to Write Your Story?
+          </h2>
+          <p class="text-white/90 text-xl max-w-2xl mx-auto mb-10">
+            Join 50,000+ explorers who travel further, better, and more
+            beautifully with SkyWay.
+          </p>
+          <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <button
+              class="bg-tertiary-fixed text-on-tertiary-fixed px-10 py-4 rounded-lg font-bold text-lg hover:shadow-xl hover:translate-y-[-2px] transition-all"
+            >
+              Start Your Booking
+            </button>
+            <button
+              class="bg-white/20 backdrop-blur-md text-white border border-white/30 px-10 py-4 rounded-lg font-bold text-lg hover:bg-white/30 transition-all"
+            >
+              Explore Membership
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="bg-slate-50 dark:bg-slate-950 w-full border-t border-slate-200 dark:border-slate-800 font-['Manrope'] text-sm"
+    >
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 gap-8 px-6 py-12 max-w-7xl mx-auto"
+      >
+        <div class="col-span-2 md:col-span-1">
+          <span
+            class="text-xl font-bold text-blue-900 dark:text-blue-100 mb-6 block"
+            >SkyWay Travels</span
+          >
+          <p class="text-slate-500 dark:text-slate-400 max-w-xs mb-6">
+            Curating luxury travel experiences that bridge the gap between
+            imagination and reality.
+          </p>
+          <div class="flex gap-4">
+            <span
+              class="material-symbols-outlined text-slate-400 hover:text-blue-600 cursor-pointer"
+              data-icon="public"
+              >public</span
+            >
+            <span
+              class="material-symbols-outlined text-slate-400 hover:text-blue-600 cursor-pointer"
+              data-icon="language"
+              >language</span
+            >
+            <span
+              class="material-symbols-outlined text-slate-400 hover:text-blue-600 cursor-pointer"
+              data-icon="mail"
+              >mail</span
+            >
+          </div>
+        </div>
+        <div>
+          <h4
+            class="font-bold text-blue-800 dark:text-blue-400 uppercase tracking-widest text-[0.6875rem] mb-6"
+          >
+            Explore
+          </h4>
+          <ul class="space-y-4">
+            <li>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                href="#"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                href="#"
+                >Careers</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                href="#"
+                >Support</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                href="#"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4
+            class="font-bold text-blue-800 dark:text-blue-400 uppercase tracking-widest text-[0.6875rem] mb-6"
+          >
+            Legal
+          </h4>
+          <ul class="space-y-4">
+            <li>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                href="#"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                href="#"
+                >Terms of Service</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                href="#"
+                >Cookie Policy</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4
+            class="font-bold text-blue-800 dark:text-blue-400 uppercase tracking-widest text-[0.6875rem] mb-6"
+          >
+            Newsletter
+          </h4>
+          <p class="text-slate-500 dark:text-slate-400 mb-4">
+            Receive monthly curated destination guides.
+          </p>
+          <div
+            class="flex bg-white dark:bg-slate-900 rounded-lg p-1 border border-slate-200 dark:border-slate-800"
+          >
+            <input
+              class="bg-transparent border-none focus:ring-0 text-xs w-full px-2"
+              placeholder="Your email"
+              type="email"
+            />
+            <button class="bg-primary text-white p-2 rounded-md">
+              <span class="material-symbols-outlined text-sm" data-icon="send"
+                >send</span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto px-6 py-6 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 dark:text-slate-400"
+      >
+        <p>© 2026 SkyWay Travels. All rights reserved.</p>
+        <div class="flex gap-6">
+          <span class="hover:text-blue-600 cursor-pointer">English</span>
+          <span class="hover:text-blue-600 cursor-pointer">USD ($)</span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
