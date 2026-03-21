@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "aeronova-84f9a"
-  }
+    "default": "aeronova-d3210"
+  },
+  "targets": {},
+  "etags": {}
 }

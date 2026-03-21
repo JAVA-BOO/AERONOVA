@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>404 - Page Not Found | SkyWay Travels</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Manrope:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              secondary: "#436182",
+              primary: "#004685",
+              outline: "#727783",
+              "surface-tint": "#095fae",
+              "secondary-fixed-dim": "#abc9ef",
+              "inverse-primary": "#a6c8ff",
+              "on-primary-fixed-variant": "#004786",
+              "secondary-fixed": "#d1e4ff",
+              "on-tertiary-fixed": "#2f1500",
+              "surface-bright": "#f7f9fb",
+              "outline-variant": "#c1c6d3",
+              "on-secondary-fixed-variant": "#2a4968",
+              "inverse-on-surface": "#eff1f3",
+              "surface-variant": "#e0e3e5",
+              "on-secondary": "#ffffff",
+              "surface-dim": "#d8dadc",
+              "primary-fixed-dim": "#a6c8ff",
+              "on-surface-variant": "#414751",
+              "on-surface": "#191c1e",
+              "primary-container": "#075ead",
+              "on-secondary-fixed": "#001d35",
+              "tertiary-fixed": "#ffdcc3",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#d5e3ff",
+              "on-error": "#ffffff",
+              "surface-container-low": "#f2f4f6",
+              surface: "#f7f9fb",
+              "on-tertiary-container": "#ffcda8",
+              "surface-container": "#eceef0",
+              "on-secondary-container": "#405e7e",
+              "tertiary-fixed-dim": "#ffb77d",
+              "surface-container-highest": "#e0e3e5",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#2d3133",
+              "on-tertiary": "#ffffff",
+              error: "#ba1a1a",
+              "on-background": "#191c1e",
+              "surface-container-high": "#e6e8ea",
+              "on-primary-container": "#c2d8ff",
+              "on-error-container": "#93000a",
+              tertiary: "#6c3800",
+              background: "#f7f9fb",
+              "tertiary-container": "#8f4c00",
+              "secondary-container": "#b9d7fd",
+              "on-tertiary-fixed-variant": "#6e3900",
+              "on-primary-fixed": "#001c3b",
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Manrope"],
+              label: ["Manrope"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.8);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-surface font-body text-on-surface selection:bg-secondary-container"
+  >
+    <!-- TopNavBar Suppression Check: Suppressed for Transactional/Error Screens -->
+    <main
+      class="min-h-screen flex flex-col items-center justify-center px-6 py-12 relative overflow-hidden"
+    >
+      <!-- Atmospheric Background Elements -->
+      <div
+        class="absolute top-[-10%] right-[-5%] w-[40rem] h-[40rem] rounded-full bg-primary-fixed/30 blur-[100px] -z-10"
+      ></div>
+      <div
+        class="absolute bottom-[-5%] left-[-5%] w-[30rem] h-[30rem] rounded-full bg-tertiary-fixed/20 blur-[80px] -z-10"
+      ></div>
+      <div class="max-w-3xl w-full text-center space-y-12">
+        <!-- Logo Section -->
+        <div class="flex flex-col items-center gap-4">
+          <span
+            class="text-3xl font-headline font-bold tracking-tighter text-primary"
+            >SkyWay Travels</span
+          >
+          <div class="h-px w-12 bg-outline-variant/30"></div>
+        </div>
+        <!-- Hero Error Visual -->
+        <div class="relative flex justify-center py-8">
+          <!-- Large 404 Text -->
+          <h1
+            class="font-headline text-[10rem] md:text-[14rem] font-extrabold tracking-tighter text-primary/5 leading-none select-none"
+          >
+            404
+          </h1>
+          <!-- Floating Icon: Wandering Airplane -->
+          <div
+            class="absolute inset-0 flex items-center justify-center pointer-events-none"
+          >
+            <div
+              class="relative w-full max-w-sm h-48 flex items-center justify-center"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-8xl md:text-9xl opacity-80"
+                data-icon="travel_explore"
+                style="font-variation-settings: 'FILL' 1"
+              >
+                travel_explore
+              </span>
+              <!-- "Lost" luggage indicator -->
+              <div
+                class="absolute bottom-4 right-1/4 glass-effect p-3 rounded-xl shadow-sm border border-outline-variant/10"
+              >
+                <span
+                  class="material-symbols-outlined text-tertiary text-3xl"
+                  data-icon="luggage"
+                >
+                  luggage
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Message Content -->
+        <div class="space-y-6 relative z-10">
+          <div class="space-y-2">
+            <h2
+              class="font-headline text-3xl md:text-5xl font-bold tracking-tight text-on-surface"
+            >
+              Oops! Page Not Found
+            </h2>
+            <p
+              class="text-on-surface-variant text-lg md:text-xl max-w-md mx-auto font-body"
+            >
+              The page you’re looking for doesn’t exist or has been moved. It
+              seems your journey took an unexpected detour.
+            </p>
+          </div>
+          <!-- CTA Section -->
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+          >
+            <a
+              class="group flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-lg transition-all hover:scale-[1.02] active:scale-95 shadow-md shadow-primary/20"
+              href="/"
+            >
+              <span class="material-symbols-outlined text-xl" data-icon="home"
+                >home</span
+              >
+              Back to Home
+            </a>
+            <a
+              class="flex items-center gap-2 px-8 py-4 bg-surface-container-highest text-on-surface font-semibold rounded-lg transition-all hover:bg-surface-variant"
+              href="/destinations"
+            >
+              Explore Destinations
+            </a>
+          </div>
+        </div>
+        <!-- Bento-style Helper Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-12">
+          <div
+            class="p-6 bg-surface-container-lowest rounded-xl text-left hover:shadow-lg transition-shadow duration-300"
+          >
+            <span
+              class="material-symbols-outlined text-primary mb-3 block"
+              data-icon="map"
+              >map</span
+            >
+            <h3
+              class="font-headline font-bold text-sm mb-1 uppercase tracking-wider text-outline"
+            >
+              Search Trip
+            </h3>
+            <p class="text-sm text-on-surface-variant">
+              Find your next adventure using our flight search.
+            </p>
+          </div>
+          <div
+            class="p-6 bg-surface-container-lowest rounded-xl text-left hover:shadow-lg transition-shadow duration-300"
+          >
+            <span
+              class="material-symbols-outlined text-tertiary mb-3 block"
+              data-icon="support_agent"
+              >support_agent</span
+            >
+            <h3
+              class="font-headline font-bold text-sm mb-1 uppercase tracking-wider text-outline"
+            >
+              Need Help?
+            </h3>
+            <p class="text-sm text-on-surface-variant">
+              Our concierges are available 24/7 to assist you.
+            </p>
+          </div>
+          <div
+            class="p-6 bg-surface-container-lowest rounded-xl text-left hover:shadow-lg transition-shadow duration-300"
+          >
+            <span
+              class="material-symbols-outlined text-secondary mb-3 block"
+              data-icon="history_edu"
+              >history_edu</span
+            >
+            <h3
+              class="font-headline font-bold text-sm mb-1 uppercase tracking-wider text-outline"
+            >
+              The Journal
+            </h3>
+            <p class="text-sm text-on-surface-variant">
+              Read stories from our most seasoned travelers.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer Component Mapping -->
+    <footer class="bg-surface-container-lowest w-full border-t-0 mt-auto">
+      <div
+        class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 max-w-7xl mx-auto font-manrope text-sm"
+      >
+        <div class="mb-8 md:mb-0 space-y-2">
+          <span class="text-lg font-bold text-[#004685]">SkyWay Travels</span>
+          <p class="text-slate-500 dark:text-slate-500">
+            © 2024 SkyWay Travels. All rights reserved.
+          </p>
+        </div>
+        <nav class="flex flex-wrap justify-center gap-8">
+          <a
+            class="text-slate-500 dark:text-slate-500 hover:text-[#ffb77d] transition-colors"
+            href="#"
+            >Privacy Policy</a
+          >
+          <a
+            class="text-slate-500 dark:text-slate-500 hover:text-[#ffb77d] transition-colors"
+            href="#"
+            >Terms of Service</a
+          >
+          <a
+            class="text-slate-500 dark:text-slate-500 hover:text-[#ffb77d] transition-colors"
+            href="#"
+            >Contact Us</a
+          >
+          <a
+            class="text-slate-500 dark:text-slate-500 hover:text-[#ffb77d] transition-colors"
+            href="#"
+            >Support</a
+          >
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
