@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join SkyWay - Elevate Your Journey</title>
-    <link href="./output.css" rel="stylesheet" />
+    <link href="output.css" rel="stylesheet" />
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-auth-compat.js"></script>
 
     <!-- google fonts link -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -51,7 +55,7 @@
         <div
           class="font-headline tracking-tight text-2xl font-bold text-[#075EAD] dark:text-blue-400"
         >
-          SkyWay
+          <a href="index.html"> SkyWay </a>
         </div>
         <div class="flex items-center gap-4">
           <span
@@ -60,7 +64,7 @@
           >
           <a
             class="text-sm font-semibold text-primary hover:text-primary-container transition-colors dark: bg-amber-50 dark:px-2 dark:py-2"
-            href="#"
+            href="./login.html"
             >Log In</a
           >
         </div>
@@ -200,8 +204,9 @@
               >
               <input
                 class="w-full px-4 py-3 rounded border-none bg-surface-container focus:ring-2 focus:ring-primary transition-shadow placeholder:text-outline/60"
-                placeholder="Johnathan Doe"
+                placeholder="Kratos"
                 type="text"
+                id="name"
               />
             </div>
             <div class="space-y-1.5">
@@ -213,7 +218,9 @@
                 class="w-full px-4 py-3 rounded border-none bg-surface-container focus:ring-2 focus:ring-primary transition-shadow placeholder:text-outline/60"
                 placeholder="name@example.com"
                 type="email"
+                id="email"
               />
+              <p class="text-on-error-container italic" id="emailError"></p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="space-y-1.5">
@@ -225,6 +232,7 @@
                   class="w-full px-4 py-3 rounded border-none bg-surface-container focus:ring-2 focus:ring-primary transition-shadow placeholder:text-outline/60"
                   placeholder="••••••••"
                   type="password"
+                  id="password"
                 />
               </div>
               <div class="space-y-1.5">
@@ -236,8 +244,10 @@
                   class="w-full px-4 py-3 rounded border-none bg-surface-container focus:ring-2 focus:ring-primary transition-shadow placeholder:text-outline/60"
                   placeholder="••••••••"
                   type="password"
+                  id="confirm"
                 />
               </div>
+              <p class="text-on-error-container italic" id="passwordError"></p>
             </div>
             <div class="flex items-start gap-3 py-2">
               <input
@@ -261,7 +271,9 @@
             </div>
             <button
               class="w-full py-4 mt-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold text-lg rounded-lg shadow-lg hover:shadow-primary/20 active:scale-[0.98] transition-all"
-              type="submit"
+              id="signUpBtn"
+              onclick="signUpUser()"
+              type="button"
             >
               Create My Account
             </button>
@@ -275,3 +287,5 @@
     </main>
   </body>
 </html>
+
+<script src="./js/signup.js"></script>

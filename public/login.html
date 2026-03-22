@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - SkyWay Travels</title>
-    <link href="./output.css" rel="stylesheet" />
+    <link href="output.css" rel="stylesheet" />
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-auth-compat.js"></script>
 
     <!-- google fonts link -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,7 +59,8 @@
         <div class="flex items-center gap-2">
           <span
             class="text-2xl font-extrabold font-headline tracking-tighter text-primary"
-            >SkyWay</span
+          >
+            <a href="index.html"> SkyWay </a></span
           >
         </div>
         <div class="hidden md:flex items-center gap-6">
@@ -108,7 +113,7 @@
                 <input
                   class="w-full bg-surface-container-lowest border-none rounded-lg px-4 py-3.5 text-on-surface font-body focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-outline-variant"
                   id="email"
-                  placeholder="alex@skyway.com"
+                  placeholder="kratos@skyway.com"
                   type="email"
                 />
               </div>
@@ -139,9 +144,11 @@
             <!-- CTA Button -->
             <button
               class="w-full py-4 rounded-lg bg-gradient-to-r from-primary to-primary-container text-white font-headline font-bold text-lg hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] transition-all"
-              type="submit"
+              type="button"
+              id="LogInBtn"
+              onclick="LogInUser()"
             >
-              Sign In
+              Log In
             </button>
           </form>
           <!-- Social Logins -->
@@ -195,7 +202,9 @@
           <div class="mt-10 text-center">
             <p class="text-on-surface-variant text-sm">
               New to SkyWay?
-              <a class="text-primary font-bold ml-1 hover:underline" href="#"
+              <a
+                class="text-primary font-bold ml-1 hover:underline"
+                href="./signup.html"
                 >Create an account</a
               >
             </p>
@@ -223,3 +232,5 @@
     </main>
   </body>
 </html>
+
+<script src="./js/login.js"></script>
