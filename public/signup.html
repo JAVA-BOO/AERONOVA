@@ -294,3 +294,15 @@
 </html>
 
 <script src="./js/signup.js"></script>
+<!-- <script>
+  fetch("./flights.json")
+    .then((res) => res.json())
+    .then((data) => {
+      data.forEach((flight, index) => {
+        db.collection("flights")
+          .add(flight)
+          .then(() => console.log("Uploaded:", index + 1))
+          .catch((err) => console.error(err));
+      });
+    });
+</script> -->

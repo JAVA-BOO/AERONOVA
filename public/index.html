@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SkyWay Travels - Your Digital Concierge</title>
     <link href="output.css" rel="stylesheet" />
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-auth-compat.js"></script>
+
+    <!-- firestore -->
+
+    <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore-compat.js"></script>
 
     <!-- google fonts link -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -139,61 +147,67 @@
                   >flight_takeoff</span
                 >
                 <select
-                  id="from-select"
+                  id="fromWhere"
                   class="w-full px-4 focus:outline-none focus:ring-0"
                 >
                   <option value="">From Where?</option>
                   <optgroup label="Africa">
-                    <option>Lagos (LOS)</option>
-                    <option>Accra (ACC)</option>
-                    <option>Nairobi (NBO)</option>
-                    <option>Johannesburg (JNB)</option>
-                    <option>Cairo (CAI)</option>
-                    <option>Gambia</option>
-                    <option>Pretoria</option>
+                    <option value="Lagos (LOS)">Lagos (LOS)</option>
+                    <option value="Accra (ACC)">Accra (ACC)</option>
+                    <option value="Nairobi (NBO)">Nairobi (NBO)</option>
+                    <option value="Johannesburg (JNB)">
+                      Johannesburg (JNB)
+                    </option>
+                    <option value="Cairo (CAI)">Cairo (CAI)</option>
+                    <option value="Gambia">Gambia</option>
+                    <option value="Pretoria">Pretoria</option>
                   </optgroup>
                   <optgroup label="Europe">
-                    <option>London (LHR)</option>
-                    <option>Paris (CDG)</option>
-                    <option>Amsterdam (AMS)</option>
-                    <option>Madrid (MAD)</option>
-                    <option>Frankfurt (FRA)</option>
-                    <option>Paris,FRance</option>
+                    <option value="London (LHR)">London (LHR)</option>
+                    <option value="Paris (CDG)">Paris (CDG)</option>
+                    <option value="Amsterdam (AMS)">Amsterdam (AMS)</option>
+                    <option value="Madrid (MAD)">Madrid (MAD)</option>
+                    <option value="Frankfurt (FRA)">Frankfurt (FRA)</option>
+                    <option value="Paris,France">Paris,France</option>
                   </optgroup>
                   <optgroup label="United States">
-                    <option>New York (JFK)</option>
-                    <option>Washington, D.C. (IAD)</option>
-                    <option>Atlanta (ATL)</option>
-                    <option>Miami (MIA)</option>
-                    <option>San Francisco (SFO)</option>
+                    <option value="New York (JFK)">New York (JFK)</option>
+                    <option value="Washington, D.C. (IAD)">
+                      Washington, D.C. (IAD)
+                    </option>
+                    <option value="Atlanta (ATL)">Atlanta (ATL)</option>
+                    <option value="Miami (MIA)">Miami (MIA)</option>
+                    <option value="San Francisco (SFO)">
+                      San Francisco (SFO)
+                    </option>
                   </optgroup>
                   <optgroup label="Canada">
-                    <option>Toronto (YYZ)</option>
-                    <option>Vancouver (YVR)</option>
-                    <option>Montreal (YUL)</option>
+                    <option value="Toronto (YYZ)">Toronto (YYZ)</option>
+                    <option value="Vancouver (YVR)">Vancouver (YVR)</option>
+                    <option value="Montreal (YUL)">Montreal (YUL)</option>
                   </optgroup>
                   <optgroup label="Caribbean">
-                    <option>Barbados (BGI)</option>
-                    <option>Kingston (KIN)</option>
-                    <option>Nassau (NAS)</option>
+                    <option value="Barbados (BGI)">Barbados (BGI)</option>
+                    <option value="Kingston (KIN)">Kingston (KIN)</option>
+                    <option value="Nassau (NAS)">Nassau (NAS)</option>
                   </optgroup>
                   <optgroup label="Middle East">
-                    <option>Dubai (DXB)</option>
-                    <option>Doha (DOH)</option>
-                    <option>Riyadh (RUH)</option>
+                    <option value="Dubai (DXB)">Dubai (DXB)</option>
+                    <option value="Doha (DOH)">Doha (DOH)</option>
+                    <option value="Riyadh (RUH)">Riyadh (RUH)</option>
                   </optgroup>
                   <optgroup label="Asia-Pacific">
-                    <option>Dubai (DXB)</option>
-                    <option>Singapore (SIN)</option>
-                    <option>Hong Kong (HKG)</option>
-                    <option>Sydney (SYD)</option>
-                    <option>Tokyo (HND)</option>
+                    <option value="Dubai (DXB)">Dubai (DXB)</option>
+                    <option value="Singapore (SIN)">Singapore (SIN)</option>
+                    <option value="Hong Kong (HKG)">Hong Kong (HKG)</option>
+                    <option value="Sydney (SYD)">Sydney (SYD)</option>
+                    <option value="Tokyo (HND)">Tokyo (HND)</option>
                   </optgroup>
                   <optgroup label="United Kingdom">
-                    <option>London (LHR)</option>
-                    <option>Manchester (MAN)</option>
-                    <option>Edinburgh (EDI)</option>
-                    <option>Glasgow (GLA)</option>
+                    <option value="London (LHR)">London (LHR)</option>
+                    <option value="Manchester (MAN)">Manchester (MAN)</option>
+                    <option value="Edinburgh (EDI)">Edinburgh (EDI)</option>
+                    <option value="Glasgow (GLA)">Glasgow (GLA)</option>
                   </optgroup>
                 </select>
               </div>
@@ -210,60 +224,67 @@
                   >location_on</span
                 >
                 <select
-                  id="to-select"
-                  class="w-full px-4 py-1 focus:outline-none focus:ring-0"
+                  id="toWhere"
+                  class="w-full px-4 focus:outline-none focus:ring-0"
                 >
                   <option value="">To Where?</option>
                   <optgroup label="Africa">
-                    <option>Lagos (LOS)</option>
-                    <option>Accra (ACC)</option>
-                    <option>Nairobi (NBO)</option>
-                    <option>Johannesburg (JNB)</option>
-                    <option>Cairo (CAI)</option>
-                    <option>Gambia</option>
-                    <option>Pretoria</option>
+                    <option value="Lagos (LOS)">Lagos (LOS)</option>
+                    <option value="Accra (ACC)">Accra (ACC)</option>
+                    <option value="Nairobi (NBO)">Nairobi (NBO)</option>
+                    <option value="Johannesburg (JNB)">
+                      Johannesburg (JNB)
+                    </option>
+                    <option value="Cairo (CAI)">Cairo (CAI)</option>
+                    <option value="Gambia">Gambia</option>
+                    <option value="Pretoria">Pretoria</option>
                   </optgroup>
                   <optgroup label="Europe">
-                    <option>London (LHR)</option>
-                    <option>Paris (CDG)</option>
-                    <option>Amsterdam (AMS)</option>
-                    <option>Madrid (MAD)</option>
-                    <option>Frankfurt (FRA)</option>
-                    <option>Paris,FRance</option>
+                    <option value="London (LHR)">London (LHR)</option>
+                    <option value="Paris (CDG)">Paris (CDG)</option>
+                    <option value="Amsterdam (AMS)">Amsterdam (AMS)</option>
+                    <option value="Madrid (MAD)">Madrid (MAD)</option>
+                    <option value="Frankfurt (FRA)">Frankfurt (FRA)</option>
+                    <option value="Paris,France">Paris,France</option>
                   </optgroup>
                   <optgroup label="United States">
-                    <option>New York (JFK)</option>
-                    <option>Washington, D.C. (IAD)</option>
-                    <option>Atlanta (ATL)</option>
-                    <option>Miami (MIA)</option>
-                    <option>San Francisco (SFO)</option>
+                    <option value="New York (JFK)">New York (JFK)</option>
+                    <option value="Washington, D.C. (IAD)">
+                      Washington, D.C. (IAD)
+                    </option>
+                    <option value="Atlanta (ATL)">Atlanta (ATL)</option>
+                    <option value="Miami (MIA)">Miami (MIA)</option>
+                    <option value="San Francisco (SFO)">
+                      San Francisco (SFO)
+                    </option>
                   </optgroup>
                   <optgroup label="Canada">
-                    <option>Toronto (YYZ)</option>
-                    <option>Vancouver (YVR)</option>
-                    <option>Montreal (YUL)</option>
+                    <option value="Toronto (YYZ)">Toronto (YYZ)</option>
+                    <option value="Vancouver (YVR)">Vancouver (YVR)</option>
+                    <option value="Montreal (YUL)">Montreal (YUL)</option>
                   </optgroup>
                   <optgroup label="Caribbean">
-                    <option>Barbados (BGI)</option>
-                    <option>Kingston (KIN)</option>
-                    <option>Nassau (NAS)</option>
+                    <option value="Barbados (BGI)">Barbados (BGI)</option>
+                    <option value="Kingston (KIN)">Kingston (KIN)</option>
+                    <option value="Nassau (NAS)">Nassau (NAS)</option>
                   </optgroup>
                   <optgroup label="Middle East">
-                    <option>Dubai (DXB)</option>
-                    <option>Doha (DOH)</option>
-                    <option>Riyadh (RUH)</option>
+                    <option value="Dubai (DXB)">Dubai (DXB)</option>
+                    <option value="Doha (DOH)">Doha (DOH)</option>
+                    <option value="Riyadh (RUH)">Riyadh (RUH)</option>
                   </optgroup>
                   <optgroup label="Asia-Pacific">
-                    <option>Singapore (SIN)</option>
-                    <option>Hong Kong (HKG)</option>
-                    <option>Sydney (SYD)</option>
-                    <option>Tokyo (HND)</option>
+                    <option value="Dubai (DXB)">Dubai (DXB)</option>
+                    <option value="Singapore (SIN)">Singapore (SIN)</option>
+                    <option value="Hong Kong (HKG)">Hong Kong (HKG)</option>
+                    <option value="Sydney (SYD)">Sydney (SYD)</option>
+                    <option value="Tokyo (HND)">Tokyo (HND)</option>
                   </optgroup>
                   <optgroup label="United Kingdom">
-                    <option>London (LHR)</option>
-                    <option>Manchester (MAN)</option>
-                    <option>Edinburgh (EDI)</option>
-                    <option>Glasgow (GLA)</option>
+                    <option value="London (LHR)">London (LHR)</option>
+                    <option value="Manchester (MAN)">Manchester (MAN)</option>
+                    <option value="Edinburgh (EDI)">Edinburgh (EDI)</option>
+                    <option value="Glasgow (GLA)">Glasgow (GLA)</option>
                   </optgroup>
                 </select>
               </div>
@@ -271,20 +292,23 @@
             <div class="p-4">
               <label
                 class="block text-[0.6875rem] font-bold text-outline uppercase tracking-wider mb-1"
-                >Dates</label
+                >Travel Class</label
               >
               <div class="flex items-center gap-2">
                 <span
                   class="material-symbols-outlined text-primary"
-                  data-icon="calendar_month"
-                  >calendar_month</span
+                  data-icon="airline_seat_recline_extra"
+                  >airline_seat_recline_extra</span
                 >
-                <input
-                  class="bg-transparent border-none p-0 focus:outline-none focus:ring-0 font-headline font-semibold w-full"
-                  id="dateRange"
-                  placeholder="Depart - Return "
-                  type="text"
-                />
+                <select
+                  id="travelClass"
+                  class="w-full px-4 py-1 focus:outline-none focus:ring-0"
+                >
+                  <option value="">--select class--</option>
+                  <option>Economy</option>
+                  <option>Business</option>
+                  <option>Premium</option>
+                </select>
               </div>
             </div>
             <div class="flex gap-2 p-2">
@@ -308,6 +332,7 @@
               </div>
               <button
                 class="bg-linear-to-br from-primary to-primary-container text-on-primary p-4 rounded-lg flex items-center justify-center transition-transform active:scale-95 shadow-lg"
+                id="searchBtn"
               >
                 <span class="material-symbols-outlined" data-icon="search"
                   >search</span
