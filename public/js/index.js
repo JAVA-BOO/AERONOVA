@@ -39,6 +39,8 @@ searchBtn.addEventListener("click", async () => {
   let selectedFrom = document.getElementById("fromWhere").value.trim();
   let selectedTo = document.getElementById("toWhere").value.trim();
   let travelClass = document.getElementById("travelClass").value.trim();
+  localStorage.setItem("selectedFrom", JSON.stringify(selectedFrom));
+  localStorage.setItem("selectedTo", JSON.stringify(selectedTo));
 
   console.log(selectedFrom, selectedTo, travelClass);
   if (selectedFrom === "" || selectedTo === "" || travelClass === "") {
@@ -62,6 +64,7 @@ searchBtn.addEventListener("click", async () => {
       }));
 
       console.log(flights);
+      window.location.href = "search.html";
 
       localStorage.setItem("foundFlights", JSON.stringify(flights));
     } else {
@@ -72,6 +75,6 @@ searchBtn.addEventListener("click", async () => {
       alert("No flights found for this route");
     }
   } catch (error) {
-    console.error("Error searching flights:", err);
+    console.error("Error searching flights:");
   }
 });
