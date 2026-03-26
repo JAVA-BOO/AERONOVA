@@ -113,13 +113,13 @@
         </nav>
         <div class="flex items-center gap-4">
           <button
-            class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all"
+            class="dark:bg-surface-container-high material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all"
             data-icon="search"
           >
             search
           </button>
           <div
-            class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary/20"
+            class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary/20 hidden md:flex"
           >
             <img
               alt="User profile avatar"
@@ -127,6 +127,13 @@
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKLbyYxUu77gyT47KaGDcoRHnCxGtAIvwLFE0Bv_1MMDX5tV_LsX6yWOHFgGV9uWJgG7VetgUY4oMtB97euInLBNZGyWTH9voDLAy4CujcKkXnXyh0cphAWdh9-q7qmSZF0qNHowyHKj2pq95JCVyavZjldHVvEBcR3EKFyUIq0RNO5z9LlPSqzM2kwk8mZtGId3USdM0IyAuWHpr7_X20ANAe7MamWbb53sIpE5Jb--XnJSrf6tF1DoSCdoB5q2A5yTdWB6cc_pBv"
             />
           </div>
+          <button class="flex md:hidden">
+            <span
+              class="hover:bg-surface-container-high flex material-symbols-outlined"
+            >
+              menu
+            </span>
+          </button>
         </div>
       </div>
     </header>
@@ -157,84 +164,11 @@
         </div>
       </section>
       <!-- Main Dashboard Content - Bento Grid Inspired -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Sidebar Navigation: Account Settings -->
-        <aside class="lg:col-span-3 space-y-6">
-          <div class="bg-surface-container-low p-2 rounded-xl">
-            <nav class="flex flex-col space-y-1">
-              <a
-                class="flex items-center gap-3 px-4 py-3 bg-surface-container-lowest text-primary font-bold rounded-lg shadow-sm"
-                href="#"
-              >
-                <span class="material-symbols-outlined" data-icon="person"
-                  >person</span
-                >
-                <span>Profile</span>
-              </a>
-              <a
-                class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
-                href="#"
-              >
-                <span class="material-symbols-outlined" data-icon="credit_card"
-                  >credit_card</span
-                >
-                <span>Payment Methods</span>
-              </a>
-              <a
-                class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
-                href="#"
-              >
-                <span
-                  class="material-symbols-outlined"
-                  data-icon="notifications"
-                  >notifications</span
-                >
-                <span>Notification Preferences</span>
-              </a>
-              <a
-                class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
-                href="#"
-              >
-                <span class="material-symbols-outlined" data-icon="security"
-                  >security</span
-                >
-                <span>Security</span>
-              </a>
-              <div class="h-px bg-outline-variant/20 my-2 mx-4"></div>
-              <button
-                class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/20 rounded-lg transition-all"
-                id="signOutbtn"
-                onclick="logOutUser()"
-              >
-                <span class="material-symbols-outlined" data-icon="logout"
-                  >logout</span
-                >
-                <span>Sign Out</span>
-              </button>
-            </nav>
-          </div>
-          <!-- Support Card -->
-          <div
-            class="bg-secondary-container text-on-secondary-container p-6 rounded-xl relative overflow-hidden group"
-          >
-            <span
-              class="material-symbols-outlined absolute -bottom-4 -right-4 text-8xl opacity-10 group-hover:scale-110 transition-transform"
-              data-icon="support_agent"
-              >support_agent</span
-            >
-            <h4 class="font-bold text-lg mb-2">Need Help?</h4>
-            <p class="text-sm opacity-90 mb-4">
-              Your dedicated concierge is available 24/7 for Platinum members.
-            </p>
-            <button
-              class="bg-on-secondary-container text-secondary-container px-4 py-2 rounded-lg text-sm font-bold active:scale-95 transition-all"
-            >
-              Chat Now
-            </button>
-          </div>
-        </aside>
+
         <!-- Main Scrollable Area -->
-        <div class="lg:col-span-9 space-y-12">
+        <div class="col-span-2 space-y-12">
           <!-- Upcoming Trips -->
           <section>
             <div class="flex justify-between items-end mb-6">
@@ -281,8 +215,29 @@
             </div>
           </section>
         </div>
+
+        <!-- Support Card -->
+        <div
+          class="lg:col-span-1 space-y-6 bg-secondary-container text-on-secondary-container p-6 rounded-xl relative overflow-hidden group"
+        >
+          <span
+            class="material-symbols-outlined absolute -bottom-4 -right-4 text-8xl opacity-10 group-hover:scale-110 transition-transform"
+            data-icon="support_agent"
+            >support_agent</span
+          >
+          <h4 class="font-bold text-lg mb-2">Need Help?</h4>
+          <p class="text-sm opacity-90 mb-4">
+            Your dedicated concierge is available 24/7 for Platinum members.
+          </p>
+          <button
+            class="bg-on-secondary-container text-secondary-container px-4 py-2 rounded-lg text-sm font-bold active:scale-95 transition-all"
+          >
+            Chat Now
+          </button>
+        </div>
       </div>
     </main>
+
     <!-- Footer Shell -->
     <footer
       class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 font-['Manrope'] text-sm"
@@ -396,6 +351,60 @@
         >Plan New Trip</span
       >
     </button>
+    <!-- mobile aside -->
+
+    <aside class="lg:col-span-3 space-y-6 absolute top-0 z-50 -left-full">
+      <div class="bg-surface-container-low p-2 rounded-xl">
+        <nav class="flex flex-col space-y-1">
+          <a
+            class="flex items-center gap-3 px-4 py-3 bg-surface-container-lowest text-primary font-bold rounded-lg shadow-sm"
+            href="#"
+          >
+            <span class="material-symbols-outlined" data-icon="person"
+              >person</span
+            >
+            <span>Profile</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined" data-icon="credit_card"
+              >credit_card</span
+            >
+            <span>Payment Methods</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined" data-icon="notifications"
+              >notifications</span
+            >
+            <span>Notification Preferences</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined" data-icon="security"
+              >security</span
+            >
+            <span>Security</span>
+          </a>
+          <div class="h-px bg-outline-variant/20 my-2 mx-4"></div>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/20 rounded-lg transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined" data-icon="logout"
+              >logout</span
+            >
+            <span>Sign Out</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
   </body>
 </html>
 <script src="./js/dashboard.js"></script>
