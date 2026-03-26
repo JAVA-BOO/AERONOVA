@@ -31,8 +31,8 @@ console.log(auth);
 let loginBtn = document.getElementById("loginBtn");
 let signUpBtn = document.getElementById("signUpBtn");
 let searchBtn = document.getElementById("searchBtn");
-const flightsCards = document.getElementById("flightsCards");
-const spinner = document.getElementById("spinner");
+let flightsCards = document.getElementById("flightsCards");
+let flightsHeading = document.getElementById("flightsHeading");
 
 loginBtn.addEventListener("click", () => {
   window.location.href = "login.html";
@@ -49,7 +49,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const flights = JSON.parse(flightsJSON);
   console.log(flights);
-  const flightsHeading = document.getElementById("flightsHeading");
 
   flightsHeading.innerHTML = `
   <p class="flex flex-row gap-2">
@@ -60,6 +59,8 @@ arrow_right_alt
     displayFlights(flights);
   }, 2000);
 });
+
+function changeFlightsHeading() {}
 
 function displayFlights(flights) {
   flightsCards.innerHTML = ``;
@@ -193,8 +194,6 @@ searchBtn.addEventListener("click", async () => {
   let selectedFrom = document.getElementById("fromWhere").value.trim();
   let selectedTo = document.getElementById("toWhere").value.trim();
   let travelClass = document.getElementById("travelClass").value.trim();
-  localStorage.setItem("selectedFrom", JSON.stringify(selectedFrom));
-  localStorage.setItem("selectedTo", JSON.stringify(selectedTo));
 
   console.log(selectedFrom, selectedTo, travelClass);
   if (selectedFrom === "" || selectedTo === "" || travelClass === "") {
@@ -203,17 +202,9 @@ searchBtn.addEventListener("click", async () => {
   }
 
   try {
-    flightsCards.innerHTML = `  <div
-            class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/15 hover:shadow-xl transition-all duration-300"
-          >
-            <div class="flex flex-col xl:flex-row">
-              <!-- Flight Detail Section -->
+    let spinner = document.getElementById("spinner");
 
-              <div class="skeleton title min-full lg:w-full"></div>
-
-          
-            </div>
-          </div>`;
+    spinner.classList.remove("hidden");
 
     const flightsref = db.collection("flights");
     const querySnapshot = await flightsref
@@ -222,24 +213,32 @@ searchBtn.addEventListener("click", async () => {
       .where("to", "==", selectedTo)
 
       .get();
+    if (querySnapshot.empty) {
+      spinner.classList.add("hidden");
 
+      alert("No flights found for this route");
+      return;
+    }
     if (!querySnapshot.empty) {
       flights = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
+      localStorage.setItem("selectedFrom", JSON.stringify(selectedFrom));
+      localStorage.setItem("selectedTo", JSON.stringify(selectedTo));
+
       localStorage.setItem("foundFlights", JSON.stringify(flights));
 
       setTimeout(() => {
+        flightsHeading.innerHTML = `
+  <p class="flex flex-row gap-2">
+  ${selectedFrom}  <span class="material-symbols-outlined">
+arrow_right_alt
+</span> ${selectedTo} Flights </p>`;
         displayFlights(flights);
+        spinner.classList.add("hidden");
       }, 1000);
-    } else {
-      // querySnapshot.forEach((doc) => {
-      //   console.log(doc.id, "==", doc.data());
-      // });
-
-      alert("No flights found for this route");
-      displayFlights(flights);
+      return;
     }
   } catch (error) {
     console.error("Error searching flights:");
