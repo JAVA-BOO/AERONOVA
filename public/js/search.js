@@ -28,6 +28,20 @@ console.log(auth);
 // const flights = JSON.parse(flightsJSON);
 // console.log(flights);
 
+let loginBtn = document.getElementById("loginBtn");
+let signUpBtn = document.getElementById("signUpBtn");
+let searchBtn = document.getElementById("searchBtn");
+const flightsCards = document.getElementById("flightsCards");
+const spinner = document.getElementById("spinner");
+
+loginBtn.addEventListener("click", () => {
+  window.location.href = "login.html";
+});
+
+signUpBtn.addEventListener("click", () => {
+  window.location.href = "signup.html";
+});
+
 window.addEventListener("DOMContentLoaded", () => {
   const flightsJSON = localStorage.getItem("foundFlights");
   const selectedFrom = JSON.parse(localStorage.getItem("selectedFrom"));
@@ -35,7 +49,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const flights = JSON.parse(flightsJSON);
   console.log(flights);
-  const flightsCards = document.getElementById("flightsCards");
   const flightsHeading = document.getElementById("flightsHeading");
 
   flightsHeading.innerHTML = `
@@ -44,14 +57,19 @@ window.addEventListener("DOMContentLoaded", () => {
 arrow_right_alt
 </span> ${selectedTo} Flights </p>`;
   setTimeout(() => {
-    flightsCards.innerHTML = "";
-    flights.forEach((flights, index) => {
-      let dpt = flights.from;
-      let newDpt = dpt.slice(dpt.length - 4, dpt.length - 1);
-      let art = flights.to;
-      let newArt = art.slice(art.length - 4, art.length - 1);
+    displayFlights(flights);
+  }, 2000);
+});
 
-      flightsCards.innerHTML += ` 
+function displayFlights(flights) {
+  flightsCards.innerHTML = ``;
+  flights.forEach((flights, index) => {
+    let dpt = flights.from;
+    let newDpt = dpt.slice(dpt.length - 4, dpt.length - 1);
+    let art = flights.to;
+    let newArt = art.slice(art.length - 4, art.length - 1);
+
+    flightsCards.innerHTML += ` 
          <div
             class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/15 hover:shadow-xl transition-all duration-300 mb-6"
           >
@@ -64,10 +82,10 @@ arrow_right_alt
                   class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center p-2"
                 >
                   <img
-                    alt="British Airways Logo"
+                    alt="${flights.airline} Logo"
                     class="w-full h-auto object-contain"
-                    data-alt="British Airways minimalist airline logo"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuByfD2fasCM2d1bR8LtCJ8mZsCjtncTlvsvhzoaewXqJA17iPDOna9vuqc_DGXoGqGNmTh3BA8BirL0JBz4WLFNEo5HvDb7U7FILYeQBWmli5bhE_v_BuXm8bBxEgBP2mlUCGTQBjsnT7L6pHfUn36AsJX5yGNkq8OZdymnFeJFhvVU05jLuMcShLRRghbWJm6uVlnEV8FygDY2zIl4kekneJ_H2I1mKOrWajEnBap58Pqg4BzXJJxrdEj5qW5yLV7tynWX0INTYFq-"
+                    data-alt="${flights.airline} minimalist airline logo"
+                    src="${getFlightImg(flights.airline)}"
                   />
                 </div>
                 <div>
@@ -168,6 +186,92 @@ arrow_right_alt
             </div>
             
             `;
-    });
-  }, 2000);
+  });
+}
+
+searchBtn.addEventListener("click", async () => {
+  let selectedFrom = document.getElementById("fromWhere").value.trim();
+  let selectedTo = document.getElementById("toWhere").value.trim();
+  let travelClass = document.getElementById("travelClass").value.trim();
+  localStorage.setItem("selectedFrom", JSON.stringify(selectedFrom));
+  localStorage.setItem("selectedTo", JSON.stringify(selectedTo));
+
+  console.log(selectedFrom, selectedTo, travelClass);
+  if (selectedFrom === "" || selectedTo === "" || travelClass === "") {
+    alert("Please select departure and destination");
+    return;
+  }
+
+  try {
+    flightsCards.innerHTML = `  <div
+            class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/15 hover:shadow-xl transition-all duration-300"
+          >
+            <div class="flex flex-col xl:flex-row">
+              <!-- Flight Detail Section -->
+
+              <div class="skeleton title min-full lg:w-full"></div>
+
+          
+            </div>
+          </div>`;
+
+    const flightsref = db.collection("flights");
+    const querySnapshot = await flightsref
+      .where("from", "==", selectedFrom)
+      .where("to", "==", selectedTo)
+      .where("to", "==", selectedTo)
+
+      .get();
+
+    if (!querySnapshot.empty) {
+      flights = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      localStorage.setItem("foundFlights", JSON.stringify(flights));
+
+      setTimeout(() => {
+        displayFlights(flights);
+      }, 1000);
+    } else {
+      // querySnapshot.forEach((doc) => {
+      //   console.log(doc.id, "==", doc.data());
+      // });
+
+      alert("No flights found for this route");
+      displayFlights(flights);
+    }
+  } catch (error) {
+    console.error("Error searching flights:");
+  }
 });
+
+function getFlightImg(flightName) {
+  switch (flightName) {
+    case "Qatar Airways":
+      return "./images/qatar.png";
+    case "Delta":
+      return "./images/delta.png";
+    case "Emirates":
+      return "./images/emirate.png";
+    case "British Airways":
+      return "./images/britishairways.png";
+    case "Air Canada":
+      return "./images/aircadana.png";
+    case "Lufthansa":
+      return "./images/lufthansa.png";
+    case "Virgin Atlantic":
+      return "./images/virginatlantic.png";
+    case "Air France":
+      return "./images/airfrance.png";
+    case "KLM":
+      return "./images/klm.png";
+    case "South African Airways":
+      return "./images/southafrican.png";
+    case "Singapore Airlines":
+      return "./images/singapore.png";
+
+    default:
+      return "../images/skyair.avif";
+  }
+}
