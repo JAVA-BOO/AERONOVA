@@ -64,6 +64,7 @@ function signUpUser() {
           createdAt: new Date(),
           role: "user",
           status: "active",
+          skymilesBalance: "0",
         });
       })
       .then(() => {

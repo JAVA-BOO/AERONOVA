@@ -12,6 +12,10 @@
 
     <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-auth-compat.js"></script>
 
+    <!-- firestore -->
+
+    <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore-compat.js"></script>
+
     <!-- google fonts link -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -105,11 +109,6 @@
             href="#"
             >Destinations</a
           >
-          <a
-            class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-            href="#"
-            >Deals</a
-          >
         </nav>
         <div class="flex items-center gap-4">
           <button
@@ -127,7 +126,7 @@
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKLbyYxUu77gyT47KaGDcoRHnCxGtAIvwLFE0Bv_1MMDX5tV_LsX6yWOHFgGV9uWJgG7VetgUY4oMtB97euInLBNZGyWTH9voDLAy4CujcKkXnXyh0cphAWdh9-q7qmSZF0qNHowyHKj2pq95JCVyavZjldHVvEBcR3EKFyUIq0RNO5z9LlPSqzM2kwk8mZtGId3USdM0IyAuWHpr7_X20ANAe7MamWbb53sIpE5Jb--XnJSrf6tF1DoSCdoB5q2A5yTdWB6cc_pBv"
             />
           </div>
-          <button class="flex md:hidden">
+          <button class="flex md:hidden" id="toggleBtn">
             <span
               class="hover:bg-surface-container-high flex material-symbols-outlined"
             >
@@ -353,44 +352,54 @@
     </button>
     <!-- mobile aside -->
 
-    <aside class="lg:col-span-3 space-y-6 absolute top-0 z-50 -left-full">
-      <div class="bg-surface-container-low p-2 rounded-xl">
+    <aside
+      class="fixed duration-300 ease-in top-0 z-50 h-screen w-screen left-full"
+      id="menuBar"
+    >
+      <div class="bg-surface-container-low p-2 h-full w-screen">
+        <div class="text-end">
+          >
+          <button id="closeMenu">
+            <span class="material-symbols-outlined" style="font-size: 36px">
+              close
+            </span>
+          </button>
+        </div>
         <nav class="flex flex-col space-y-1">
           <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined"> travel_explore </span>
+
+            <span>Explore</span>
+          </a>
+          <a
             class="flex items-center gap-3 px-4 py-3 bg-surface-container-lowest text-primary font-bold rounded-lg shadow-sm"
+            href="#"
+          >
+            <span class="material-symbols-outlined"> airplane_ticket </span>
+
+            <span>Booking</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined">
+              assistant_navigation
+            </span>
+
+            <span>Destinations</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
             href="#"
           >
             <span class="material-symbols-outlined" data-icon="person"
               >person</span
             >
             <span>Profile</span>
-          </a>
-          <a
-            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
-            href="#"
-          >
-            <span class="material-symbols-outlined" data-icon="credit_card"
-              >credit_card</span
-            >
-            <span>Payment Methods</span>
-          </a>
-          <a
-            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
-            href="#"
-          >
-            <span class="material-symbols-outlined" data-icon="notifications"
-              >notifications</span
-            >
-            <span>Notification Preferences</span>
-          </a>
-          <a
-            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
-            href="#"
-          >
-            <span class="material-symbols-outlined" data-icon="security"
-              >security</span
-            >
-            <span>Security</span>
           </a>
           <div class="h-px bg-outline-variant/20 my-2 mx-4"></div>
           <a

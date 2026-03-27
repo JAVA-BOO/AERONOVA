@@ -14,17 +14,44 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 console.log(app);
 
+// Initialize Cloud Firestore and get a reference to the service
+const db = firebase.firestore();
+
 const auth = firebase.auth();
 console.log(auth);
 
-function checkUserAuth() {
-  auth.onAuthStateChanged((user) => {
+let toggleBtn = document.getElementById("toggleBtn");
+let menuBar = document.getElementById("menuBar");
+let closeMenu = document.getElementById("closeMenu");
+
+toggleBtn.addEventListener("click", () => {
+  menuBar.classList.remove("left-full");
+  menuBar.classList.add("left-0");
+});
+
+closeMenu.addEventListener("click", () => {
+  menuBar.classList.remove("left-0");
+  menuBar.classList.add("left-full");
+});
+
+loadDashboardUser();
+
+function loadDashboardUser() {
+  auth.onAuthStateChanged(async (user) => {
     if (user) {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/v8/firebase.User
-      var uid = user.uid;
+      const uid = user.uid;
+      let forUserName = document.getElementById("forUserName");
       forUserName.innerHTML = user.displayName || "user";
       console.log(user, "im here");
+
+      // lets fetch users details from firestore wih our the collection i created
+
+      try {
+        const userDocRef = db.collection("users").doc(uid);
+        const userDoc = await userDocRef.get();
+      } catch (error) {}
     } else {
       // User is signed out
       // ...
@@ -33,8 +60,6 @@ function checkUserAuth() {
     }
   });
 }
-
-checkUserAuth();
 
 function logOutUser() {
   let canLogout = confirm("are you sure?");
