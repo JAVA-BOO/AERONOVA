@@ -23,6 +23,11 @@ console.log(auth);
 let toggleBtn = document.getElementById("toggleBtn");
 let menuBar = document.getElementById("menuBar");
 let closeMenu = document.getElementById("closeMenu");
+let profileIcon = document.getElementById("profileIcon");
+let userIcon = document.getElementById("userIcon");
+let goToProfileBtn = document.querySelectorAll(".goToProfileBtn");
+
+loadDashboardUser();
 
 toggleBtn.addEventListener("click", () => {
   menuBar.classList.remove("left-full");
@@ -34,7 +39,35 @@ closeMenu.addEventListener("click", () => {
   menuBar.classList.add("left-full");
 });
 
-loadDashboardUser();
+profileIcon.addEventListener("click", () => {
+  userIcon.classList.toggle("hidden");
+});
+
+goToProfileBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/v8/firebase.User
+        window.location.href = "./profile.html";
+
+        // lets fetch users details from firestore wih our the collection i created
+
+        try {
+          // const userDocRef = db.collection("users").doc(uid);
+          // const userDoc = await userDocRef.get()
+        } catch (error) {}
+      } else {
+        // User is signed out
+        // ...
+        console.log("im in the else block");
+        window.location.href = "./login.html";
+      }
+    });
+
+    console.log("im active");
+  });
+});
 
 function loadDashboardUser() {
   auth.onAuthStateChanged(async (user) => {
@@ -49,8 +82,8 @@ function loadDashboardUser() {
       // lets fetch users details from firestore wih our the collection i created
 
       try {
-        const userDocRef = db.collection("users").doc(uid);
-        const userDoc = await userDocRef.get();
+        // const userDocRef = db.collection("users").doc(uid);
+        // const userDoc = await userDocRef.get()
       } catch (error) {}
     } else {
       // User is signed out

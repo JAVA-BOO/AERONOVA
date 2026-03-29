@@ -60,7 +60,11 @@
         width: 300px;
         margin-bottom: 20px;
       }
-
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
       .card {
         height: 150px;
         margin-bottom: 15px;
@@ -111,21 +115,49 @@
           >
         </nav>
         <div class="flex items-center gap-4">
-          <button
-            class="dark:bg-surface-container-high material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all"
-            data-icon="search"
-          >
-            search
-          </button>
-          <div
-            class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary/20 hidden md:flex"
-          >
-            <img
-              alt="User profile avatar"
-              data-alt="Close up portrait of a professional male user"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKLbyYxUu77gyT47KaGDcoRHnCxGtAIvwLFE0Bv_1MMDX5tV_LsX6yWOHFgGV9uWJgG7VetgUY4oMtB97euInLBNZGyWTH9voDLAy4CujcKkXnXyh0cphAWdh9-q7qmSZF0qNHowyHKj2pq95JCVyavZjldHVvEBcR3EKFyUIq0RNO5z9LlPSqzM2kwk8mZtGId3USdM0IyAuWHpr7_X20ANAe7MamWbb53sIpE5Jb--XnJSrf6tF1DoSCdoB5q2A5yTdWB6cc_pBv"
-            />
+          <div class="relative">
+            <button
+              class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary/20 hidden md:flex"
+              id="profileIcon"
+            >
+              <img
+                alt="User profile avatar"
+                data-alt="Close up portrait of a professional male user"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKLbyYxUu77gyT47KaGDcoRHnCxGtAIvwLFE0Bv_1MMDX5tV_LsX6yWOHFgGV9uWJgG7VetgUY4oMtB97euInLBNZGyWTH9voDLAy4CujcKkXnXyh0cphAWdh9-q7qmSZF0qNHowyHKj2pq95JCVyavZjldHVvEBcR3EKFyUIq0RNO5z9LlPSqzM2kwk8mZtGId3USdM0IyAuWHpr7_X20ANAe7MamWbb53sIpE5Jb--XnJSrf6tF1DoSCdoB5q2A5yTdWB6cc_pBv"
+              />
+            </button>
+            <aside
+              class="absolute z-50 rounded-4xl top-full right-0 hidden"
+              id="userIcon"
+            >
+              <div class="bg-surface-container-low p-2 rounded-4xl">
+                <nav class="flex flex-col">
+                  <button
+                    class="flex items-center px-2 py-1 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all goToProfileBtn"
+                    href="#"
+                    id="lgProfile"
+                  >
+                    <span class="material-symbols-outlined" data-icon="person"
+                      >person</span
+                    >
+                    <span>Profile</span>
+                  </button>
+                  <div class="h-px bg-outline-variant/20 my-1 mx-2 px-0"></div>
+                  <button
+                    class="flex items-center gap-1 px-2 py-3 text-error hover:bg-error-container/20 rounded-lg transition-all"
+                    href=""
+                    onclick="logOutUser()"
+                  >
+                    <span class="material-symbols-outlined" data-icon="logout"
+                      >logout</span
+                    >
+                    <span class="whitespace-nowrap">Sign Out</span>
+                  </button>
+                </nav>
+              </div>
+            </aside>
           </div>
+
           <button class="flex md:hidden" id="toggleBtn">
             <span
               class="hover:bg-surface-container-high flex material-symbols-outlined"
@@ -136,7 +168,7 @@
         </div>
       </div>
     </header>
-    <main class="pt-24 pb-12 px-6 max-w-7xl mx-auto">
+    <main class="pt-24 pb-12 px-6 max-w-7xl mx-auto" id="mainPage">
       <!-- Welcome Section & Loyalty Tracker -->
       <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
         <div class="lg:col-span-2 flex flex-col justify-center">
@@ -392,25 +424,25 @@
 
             <span>Destinations</span>
           </a>
-          <a
-            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
-            href="#"
+          <button
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all goToProfileBtn"
+            id=""
           >
             <span class="material-symbols-outlined" data-icon="person"
               >person</span
             >
             <span>Profile</span>
-          </a>
+          </button>
           <div class="h-px bg-outline-variant/20 my-2 mx-4"></div>
-          <a
+          <button
             class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/20 rounded-lg transition-all"
-            href="#"
+            onclick="logOutUser()"
           >
             <span class="material-symbols-outlined" data-icon="logout"
               >logout</span
             >
             <span>Sign Out</span>
-          </a>
+          </button>
         </nav>
       </div>
     </aside>

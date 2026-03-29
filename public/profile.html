@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile | SkyWay Travels</title>
+
+    <link href="./output.css" rel="stylesheet" />
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-auth-compat.js"></script>
+
+    <!-- firestore -->
+
+    <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore-compat.js"></script>
+
+    <!-- google fonts link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double+Ink:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    />
+
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      body {
+        font-family: "Manrope", sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .skeleton {
+        background: #e5e7eb;
+        border-radius: 8px;
+        animation: pulse 1.5s infinite;
+      }
+
+      .title {
+        height: 30px;
+        width: 300px;
+        margin-bottom: 20px;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .card {
+        height: 150px;
+        margin-bottom: 15px;
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 0.6;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.6;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-surface text-on-surface antialiased">
+    <!-- Top Navigation Shell -->
+    <header
+      class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none font-['Plus_Jakarta_Sans'] antialiased"
+    >
+      <div
+        class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto"
+      >
+        <div
+          class="text-2xl font-bold tracking-tight text-blue-900 dark:text-blue-100"
+        >
+          SkyWay Travels
+        </div>
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+            href="#"
+            >Explore</a
+          >
+          <a
+            class="text-blue-700 dark:text-blue-300 font-semibold border-b-2 border-blue-700 dark:border-blue-300 pb-1"
+            href="#"
+            >Bookings</a
+          >
+          <a
+            class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+            href="#"
+            >Destinations</a
+          >
+        </nav>
+        <div class="flex items-center gap-4">
+          <div class="relative">
+            <button
+              class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary/20 hidden md:flex"
+              id="profileIcon"
+            >
+              <img
+                alt="User profile avatar"
+                data-alt="Close up portrait of a professional male user"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKLbyYxUu77gyT47KaGDcoRHnCxGtAIvwLFE0Bv_1MMDX5tV_LsX6yWOHFgGV9uWJgG7VetgUY4oMtB97euInLBNZGyWTH9voDLAy4CujcKkXnXyh0cphAWdh9-q7qmSZF0qNHowyHKj2pq95JCVyavZjldHVvEBcR3EKFyUIq0RNO5z9LlPSqzM2kwk8mZtGId3USdM0IyAuWHpr7_X20ANAe7MamWbb53sIpE5Jb--XnJSrf6tF1DoSCdoB5q2A5yTdWB6cc_pBv"
+              />
+            </button>
+            <aside
+              class="absolute z-50 rounded-4xl top-full right-0 hidden"
+              id="userIcon"
+            >
+              <div class="bg-surface-container-low p-2 rounded-4xl">
+                <nav class="flex flex-col">
+                  <a
+                    class="flex items-center px-2 py-1 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
+                    href="./dashboard.html"
+                  >
+                    <span class="material-symbols-outlined" data-icon="person"
+                      >Dashboard</span
+                    >
+                    <span>Dashboard</span>
+                  </a>
+                  <div class="h-px bg-outline-variant/20 my-1 mx-2 px-0"></div>
+                  <button
+                    class="flex items-center gap-1 px-2 py-3 text-error hover:bg-error-container/20 rounded-lg transition-all"
+                    href=""
+                    onclick="logOutUser()"
+                  >
+                    <span class="material-symbols-outlined" data-icon="logout"
+                      >logout</span
+                    >
+                    <span class="whitespace-nowrap">Sign Out</span>
+                  </button>
+                </nav>
+              </div>
+            </aside>
+          </div>
+
+          <button class="flex md:hidden" id="toggleBtn">
+            <span
+              class="hover:bg-surface-container-high flex material-symbols-outlined"
+            >
+              menu
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="pt-32 pb-20 px-6 max-w-screen-xl mx-auto">
+      <!-- Hero Header -->
+      <header class="mb-12">
+        <h1
+          class="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter text-primary mb-2"
+        >
+          Account Settings
+        </h1>
+        <p class="text-on-surface-variant max-w-2xl">
+          Manage your digital concierge preferences, secure your billing
+          information, and customize your SkyWay travel experience.
+        </p>
+      </header>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Sidebar: Account Overview -->
+        <aside class="lg:col-span-4 space-y-6">
+          <div
+            class="bg-surface-container-low p-8 rounded-xl relative overflow-hidden group"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110"
+            ></div>
+            <div class="relative z-10 flex flex-col items-center text-center">
+              <div class="relative mb-6">
+                <div
+                  class="w-24 h-24 rounded-full border-4 border-surface-container-lowest shadow-sm overflow-hidden bg-surface-container-highest"
+                >
+                  <img
+                    alt="Alex Johnson Profile"
+                    class="w-full h-full object-cover"
+                    data-alt="Professional studio portrait of a friendly man in a light blue shirt, clean background, soft lighting, premium corporate style"
+                    id="profileImagePreview"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKLbyYxUu77gyT47KaGDcoRHnCxGtAIvwLFE0Bv_1MMDX5tV_LsX6yWOHFgGV9uWJgG7VetgUY4oMtB97euInLBNZGyWTH9voDLAy4CujcKkXnXyh0cphAWdh9-q7qmSZF0qNHowyHKj2pq95JCVyavZjldHVvEBcR3EKFyUIq0RNO5z9LlPSqzM2kwk8mZtGId3USdM0IyAuWHpr7_X20ANAe7MamWbb53sIpE5Jb--XnJSrf6tF1DoSCdoB5q2A5yTdWB6cc_pBv"
+                  />
+                </div>
+                <button
+                  class="absolute bottom-0 right-0 bg-primary text-on-primary p-2 rounded-full shadow-lg hover:bg-primary-container transition-colors"
+                >
+                  <label
+                    for="profileImage"
+                    class="cursor-pointer flex flex-col items-center"
+                  >
+                    <span
+                      class="material-symbols-outlined text-sm"
+                      data-icon="edit"
+                      >edit</span
+                    >
+                  </label>
+
+                  <input
+                    type="file"
+                    id="profileImage"
+                    accept="image/*"
+                    class="hidden"
+                  />
+                </button>
+              </div>
+              <h2
+                class="font-headline text-2xl font-bold text-on-surface fullNameTag"
+              >
+                Loading...
+              </h2>
+              <p
+                class="text-on-surface-variant font-medium text-sm mb-6 emailTag"
+              ></p>
+              <div
+                class="w-full space-y-3 text-left bg-surface-container-lowest/50 p-4 rounded-lg"
+              >
+                <div class="flex items-center space-x-3">
+                  <span
+                    class="material-symbols-outlined text-primary text-sm"
+                    data-icon="phone"
+                    >phone</span
+                  >
+                  <span class="text-sm font-medium phoneTag"></span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <span
+                    class="material-symbols-outlined text-primary text-sm"
+                    data-icon="verified_user"
+                    >verified_user</span
+                  >
+                  <span class="text-sm font-medium"
+                    >Luxury Tier Gold Member</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Loyalty Status Card -->
+          <div
+            class="bg-linear-to-br from-primary to-primary-container p-6 rounded-xl text-on-primary shadow-xl"
+          >
+            <div class="flex justify-between items-start mb-8">
+              <div>
+                <p
+                  class="font-label text-[0.6875rem] uppercase tracking-widest opacity-80"
+                >
+                  Current Status
+                </p>
+                <h3 class="font-headline text-xl font-bold">Horizon Voyager</h3>
+              </div>
+              <span
+                class="material-symbols-outlined text-3xl opacity-50"
+                data-icon="flight_takeoff"
+                >flight_takeoff</span
+              >
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between text-xs font-medium">
+                <span>Points to Emerald Tier</span>
+                <span>1,250 / 5,000</span>
+              </div>
+              <div class="h-1 bg-white/20 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-tertiary-fixed-dim w-[25%] shadow-[0_0_8px_rgba(255,183,125,0.5)]"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </aside>
+        <!-- Main Content: Forms -->
+        <div class="lg:col-span-8 space-y-8">
+          <!-- Profile Edit Section -->
+          <section class="bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+            <div class="flex items-center space-x-3 mb-8">
+              <span
+                class="material-symbols-outlined text-primary"
+                data-icon="person"
+                >person</span
+              >
+              <h3 class="font-headline text-xl font-bold">
+                Personal Information
+              </h3>
+            </div>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label
+                  class="block text-xs font-label uppercase tracking-wider text-on-surface-variant font-bold"
+                  >Full Name</label
+                >
+                <input
+                  class="w-full bg-surface-container-low border-none rounded-lg p-3 text-on-surface focus:ring-2 focus:ring-primary-fixed-dim transition-all font-body fullNameTag"
+                  id="fullNameInput"
+                  type="text"
+                  value="John Doe"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="block text-xs font-label uppercase tracking-wider text-on-surface-variant font-bold"
+                  >Email Address</label
+                >
+                <input
+                  class="w-full bg-surface-container-low border-none rounded-lg p-3 text-on-surface focus:ring-2 focus:ring-primary-fixed-dim transition-all font-body emailTag"
+                  type="email"
+                  readonly
+                  placeholder="kratos.k@skyway.com"
+                />
+              </div>
+              <div class="space-y-2 md:col-span-2">
+                <label
+                  class="block text-xs font-label uppercase tracking-wider text-on-surface-variant font-bold"
+                  >Phone Number</label
+                >
+                <input
+                  class="w-full bg-surface-container-low border-none rounded-lg p-3 text-on-surface focus:ring-2 focus:ring-primary-fixed-dim transition-all font-body phoneTag"
+                  id="phoneInput"
+                  type="tel"
+                  placeholder=""
+                />
+              </div>
+            </form>
+          </section>
+          <!-- Billing Details Section -->
+          <section class="bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+            <div class="flex items-center space-x-3 mb-8">
+              <span
+                class="material-symbols-outlined text-primary"
+                data-icon="payments"
+                >payments</span
+              >
+              <h3 class="font-headline text-xl font-bold">Billing Details</h3>
+            </div>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2 md:col-span-2">
+                <label
+                  class="block text-xs font-label uppercase tracking-wider text-on-surface-variant font-bold"
+                  >Street Address</label
+                >
+                <input
+                  class="w-full bg-surface-container-low border-none rounded-lg p-3 text-on-surface focus:ring-2 focus:ring-primary-fixed-dim transition-all font-body"
+                  placeholder="123 Skyline Boulevard"
+                  type="text"
+                  id="streetInput"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="block text-xs font-label uppercase tracking-wider text-on-surface-variant font-bold"
+                  >City</label
+                >
+                <input
+                  class="w-full bg-surface-container-low border-none rounded-lg p-3 text-on-surface focus:ring-2 focus:ring-primary-fixed-dim transition-all font-body"
+                  placeholder="San Francisco"
+                  type="text"
+                  id="cityInput"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="block text-xs font-label uppercase tracking-wider text-on-surface-variant font-bold"
+                  >County / State / Province</label
+                >
+                <input
+                  class="w-full bg-surface-container-low border-none rounded-lg p-3 text-on-surface focus:ring-2 focus:ring-primary-fixed-dim transition-all font-body"
+                  placeholder="California"
+                  type="text"
+                  id="countryInput"
+                />
+              </div>
+              <div
+                class="md:col-span-2 pt-6 flex flex-col sm:flex-row justify-end items-center space-y-4 sm:space-y-0 sm:space-x-4"
+              >
+                <button
+                  class="w-full sm:w-auto px-8 py-3 rounded-lg text-on-surface-variant font-bold hover:bg-surface-container-high transition-all"
+                  type="button"
+                >
+                  Cancel
+                </button>
+                <button
+                  class="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-lg font-bold shadow-lg hover:shadow-xl transition-all transform active:scale-95"
+                  type="submit"
+                  id="saveProfileChanges"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </section>
+          <!-- Subtle Informational Banner -->
+          <div
+            class="bg-tertiary-fixed p-6 rounded-xl flex items-center space-x-4 border border-tertiary-container/20"
+          >
+            <div
+              class="bg-tertiary-container p-3 rounded-full text-on-tertiary-container"
+            >
+              <span
+                class="material-symbols-outlined"
+                data-icon="lock"
+                style="font-variation-settings: 'FILL' 1"
+                >lock</span
+              >
+            </div>
+            <div>
+              <h4 class="font-headline font-bold text-on-tertiary-fixed">
+                Data Security Promise
+              </h4>
+              <p class="text-sm text-on-tertiary-fixed-variant">
+                Your billing and personal information is encrypted with 256-bit
+                bank-level security.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Shell -->
+    <footer
+      class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 font-['Manrope'] text-sm"
+    >
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 gap-8 px-6 py-12 max-w-7xl mx-auto"
+      >
+        <div class="col-span-2 md:col-span-1">
+          <div class="text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">
+            SkyWay Travels
+          </div>
+          <p class="text-slate-500 dark:text-slate-400 max-w-xs mb-4">
+            Elevating the journey since 2012. Your digital concierge for global
+            exploration.
+          </p>
+          <div class="flex gap-4">
+            <span
+              class="material-symbols-outlined text-slate-400"
+              data-icon="public"
+              >public</span
+            >
+            <span
+              class="material-symbols-outlined text-slate-400"
+              data-icon="language"
+              >language</span
+            >
+          </div>
+        </div>
+        <div>
+          <h5 class="font-bold text-blue-800 dark:text-blue-400 mb-4">
+            Company
+          </h5>
+          <ul class="space-y-2">
+            <li>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                href="#"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                href="#"
+                >Careers</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                href="#"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-bold text-blue-800 dark:text-blue-400 mb-4">Legal</h5>
+          <ul class="space-y-2">
+            <li>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                href="#"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                href="#"
+                >Terms of Service</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-bold text-blue-800 dark:text-blue-400 mb-4">
+            Support
+          </h5>
+          <ul class="space-y-2">
+            <li>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                href="#"
+                >Support Center</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                href="#"
+                >Help Center</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto px-6 py-8 border-t border-slate-200 dark:border-slate-800 text-center text-slate-400"
+      >
+        © 2026 SkyWay Travels. All rights reserved.
+      </div>
+    </footer>
+    <!-- FAB Action (Contextual to Dashboard/Home) -->
+    <button
+      class="fixed bottom-8 right-8 bg-tertiary text-on-tertiary w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40 group"
+    >
+      <span class="material-symbols-outlined" data-icon="add">add</span>
+      <span
+        class="absolute right-16 bg-on-surface text-surface px-3 py-1 rounded text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
+        >Plan New Trip</span
+      >
+    </button>
+    <!-- mobile aside -->
+
+    <aside
+      class="fixed duration-300 ease-in top-0 z-50 h-screen w-screen left-full"
+      id="menuBar"
+    >
+      <div class="bg-surface-container-low p-2 h-full w-screen">
+        <div class="text-end">
+          >
+          <button id="closeMenu">
+            <span class="material-symbols-outlined" style="font-size: 36px">
+              close
+            </span>
+          </button>
+        </div>
+        <nav class="flex flex-col space-y-1">
+          <a
+            class="flex items-center gap-3 px-4 py-3 bg-surface-container-lowest text-primary font-bold rounded-lg shadow-sm"
+            href="./dashboard.html"
+          >
+            <span class="material-symbols-outlined" data-icon="person"
+              >dashboard</span
+            >
+            <span>Dashboard</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined"> travel_explore </span>
+
+            <span>Explore</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined"> airplane_ticket </span>
+
+            <span>Booking</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined">
+              assistant_navigation
+            </span>
+
+            <span>Destinations</span>
+          </a>
+
+          <div class="h-px bg-outline-variant/20 my-2 mx-4"></div>
+          <button
+            class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/20 rounded-lg transition-all"
+            onclick="logOutUser()"
+          >
+            <span class="material-symbols-outlined" data-icon="logout"
+              >logout</span
+            >
+            <span>Sign Out</span>
+          </button>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- image pop up  -->
+  </body>
+</html>
+<script src="./js/profile.js"></script>

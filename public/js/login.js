@@ -17,7 +17,7 @@ console.log(app);
 const auth = firebase.auth();
 console.log(auth);
 
-let myButton = document.getElementById("logIntn");
+let myButton = document.getElementById("logInBtn");
 
 function LogInUser() {
   let email = document.getElementById("email").value.trim();
@@ -27,6 +27,7 @@ function LogInUser() {
     alert("all fields are mandatory");
     return;
   }
+  showLoadingandDisable("loading..", true);
 
   auth
     .signInWithEmailAndPassword(email, password)
@@ -42,5 +43,10 @@ function LogInUser() {
       var errorCode = error.code;
       var errorMessage = error.message;
       alert(errorMessage);
+      showLoadingandDisable("Login", false);
     });
+}
+function showLoadingandDisable(text, isloading) {
+  myButton.textContent = text;
+  myButton.disabled = isloading;
 }
