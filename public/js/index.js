@@ -41,14 +41,21 @@ searchBtn.addEventListener("click", async () => {
   let travelClass = document.getElementById("travelClass").value.trim();
   localStorage.setItem("selectedFrom", JSON.stringify(selectedFrom));
   localStorage.setItem("selectedTo", JSON.stringify(selectedTo));
+  let spinner = document.getElementById("spinner");
 
   console.log(selectedFrom, selectedTo, travelClass);
   if (selectedFrom === "" || selectedTo === "" || travelClass === "") {
-    alert("Please select departure and destination");
+    alert("Please select departure and destination and Travel class");
+    return;
+  }
+  if (selectedFrom === selectedTo) {
+    alert("Please select different departure and destination");
     return;
   }
 
   try {
+    spinner.classList.remove("hidden");
+
     const flightsref = db.collection("flights");
     const querySnapshot = await flightsref
       .where("from", "==", selectedFrom)
@@ -58,13 +65,15 @@ searchBtn.addEventListener("click", async () => {
       .get();
 
     if (!querySnapshot.empty) {
+      spinner.classList.add("hidden");
+
       flights = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
 
       console.log(flights);
-      window.location.href = "search.html";
+      window.location.href = "explore.html";
 
       localStorage.setItem("foundFlights", JSON.stringify(flights));
     } else {
@@ -73,6 +82,7 @@ searchBtn.addEventListener("click", async () => {
       // });
 
       alert("No flights found for this route");
+      spinner.classList.add("hidden");
     }
   } catch (error) {
     console.error("Error searching flights:");

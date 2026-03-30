@@ -28,8 +28,6 @@ let userIcon = document.getElementById("userIcon");
 let goToProfileBtn = document.querySelectorAll(".goToProfileBtn");
 let exploreBtn = document.getElementById("exploreBtn");
 
-loadDashboardUser();
-
 toggleBtn.addEventListener("click", () => {
   menuBar.classList.remove("left-full");
   menuBar.classList.add("left-0");
@@ -69,31 +67,6 @@ goToProfileBtn.forEach((btn) => {
     console.log("im active");
   });
 });
-
-function loadDashboardUser() {
-  auth.onAuthStateChanged(async (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/v8/firebase.User
-      const uid = user.uid;
-      let forUserName = document.getElementById("forUserName");
-      forUserName.innerHTML = user.displayName || "user";
-      console.log(user, "im here");
-
-      // lets fetch users details from firestore wih our the collection i created
-
-      try {
-        // const userDocRef = db.collection("users").doc(uid);
-        // const userDoc = await userDocRef.get()
-      } catch (error) {}
-    } else {
-      // User is signed out
-      // ...
-      console.log("im in the else block");
-      window.location.href = "./login.html";
-    }
-  });
-}
 
 function logOutUser() {
   let canLogout = confirm("are you sure?");

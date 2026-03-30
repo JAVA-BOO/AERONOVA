@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SkyWay Travels - Dashboard</title>
+    <title>Bookings - SkyWay Travels</title>
 
     <link href="./output.css" rel="stylesheet" />
 
@@ -49,6 +49,9 @@
       h3 {
         font-family: "Plus Jakarta Sans", sans-serif;
       }
+      .font-headline {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
       .skeleton {
         background: #e5e7eb;
         border-radius: 8px;
@@ -64,10 +67,6 @@
         background: rgba(255, 255, 255, 0.7);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-      }
-      .card {
-        height: 150px;
-        margin-bottom: 15px;
       }
 
       @keyframes pulse {
@@ -85,7 +84,7 @@
   </head>
 
   <body class="bg-surface text-on-surface antialiased">
-    <!-- Top Navigation Shell -->
+    <!-- Nav-->
     <header
       class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none font-['Plus_Jakarta_Sans'] antialiased"
     >
@@ -169,103 +168,114 @@
         </div>
       </div>
     </header>
-    <main class="pt-24 pb-12 px-6 max-w-7xl mx-auto" id="mainPage">
-      <!-- Welcome Section & Loyalty Tracker -->
-      <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-        <div class="lg:col-span-2 flex flex-col justify-center">
-          <h1
-            class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-2"
-          >
-            Welcome back, <span id="forUserName">loading...</span>
-          </h1>
-          <p class="text-on-surface-variant text-lg max-w-lg">
-            Your next adventure to the Swiss Alps is only 12 days away.
-            Everything is ready for your departure.
-          </p>
-        </div>
-        <!-- SkyMiles Tracker - Tonal Depth & Glassmorphism -->
+    <main class="pt-24 pb-20 px-6 max-w-7xl mx-auto">
+      <!-- Route Header -->
+      <section class="mb-12">
         <div
-          class="relative overflow-hidden bg-primary-container text-on-primary-container p-8 rounded-xl shadow-lg"
+          class="flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
-          <div
-            class="absolute top-[-20%] right-[-10%] w-48 h-48 bg-white/10 rounded-full blur-3xl"
-          ></div>
-          <div
-            class="relative z-10 flex flex-col h-full justify-between skeleton title"
-          ></div>
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span
+                class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-bold rounded-full uppercase tracking-wider"
+                >Round Trip</span
+              >
+              <span
+                class="text-on-surface-variant flex items-center gap-1 text-sm"
+                ><span class="material-symbols-outlined text-sm"
+                  >calendar_today</span
+                >
+                Oct 12 - Oct 20</span
+              >
+            </div>
+            <h1
+              class="text-4xl md:text-5xl font-extrabold tracking-tight text-primary leading-tight"
+            >
+              Loading...
+            </h1>
+            <p class="text-on-surface-variant text-lg mt-2">
+              Point A <span class="mx-2 text-outline">→</span> Point B
+            </p>
+          </div>
+          <div class="flex gap-4">
+            <button
+              class="p-3 rounded-full bg-surface-container-low text-primary hover:bg-surface-container-high transition-all"
+            >
+              <span class="material-symbols-outlined">share</span>
+            </button>
+            <button
+              class="p-3 rounded-full bg-surface-container-low text-primary hover:bg-surface-container-high transition-all"
+            >
+              <span class="material-symbols-outlined">favorite</span>
+            </button>
+          </div>
         </div>
       </section>
-      <!-- Main Dashboard Content - Bento Grid Inspired -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <!-- Sidebar Navigation: Account Settings -->
-
-        <!-- Main Scrollable Area -->
-        <div class="col-span-2 space-y-12">
-          <!-- Upcoming Trips -->
-          <section>
-            <div class="flex justify-between items-end mb-6">
-              <div>
-                <h2 class="text-2xl font-bold tracking-tight text-on-surface">
-                  Upcoming Trips
-                </h2>
-                <p class="text-on-surface-variant">
-                  Your upcoming reservations and itineraries.
-                </p>
-              </div>
-              <button
-                class="text-primary font-semibold text-sm hover:underline"
+        <!-- Left Column: Flight Details & Options -->
+        <div class="lg:col-span-2 space-y-10">
+          <!-- Flight Segments Breakdown -->
+          <div
+            class="bg-surface-container-lowest rounded-xl p-8 shadow-sm overflow-clip"
+          >
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary"
+                >flight_takeoff</span
               >
-                View All
-              </button>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <!-- loading state animation -->
-              <div class="skeleton title"></div>
+              Outbound Flight
+            </h2>
 
-              <!-- Trip Card 1 -->
-
-              <!-- Trip Card 2 -->
+            <div
+              class="relative z-10 h-full justify-between skeleton title"
+            ></div>
+          </div>
+          <!-- Seat Class Selection -->
+          <div class="space-y-6">
+            <h2 class="text-2xl font-bold px-1">Select Cabin Class</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+          </div>
+          <!-- Extras features-->
+          <div class="space-y-6">
+            <h2 class="text-2xl font-bold px-1">Tailor Your Trip</h2>
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+            ></div>
+          </div>
+        </div>
+        <!-- Right Column: Summary Sticky Card -->
+        <div class="lg:col-span-1">
+          <div
+            class="sticky top-28 bg-surface-container-lowest rounded-xl shadow-xl shadow-on-surface/5 border border-outline-variant/10 overflow-hidden"
+          >
+            <div class="p-6 bg-primary text-on-primary">
+              <h3 class="text-xl font-bold">Booking Summary</h3>
+              <p class="text-on-primary-container text-sm opacity-90 mt-1">
+                Review your selections
+              </p>
             </div>
-          </section>
-          <!-- Past Trips History -->
-          <section>
-            <div class="flex justify-between items-end mb-6">
-              <div>
-                <h2 class="text-2xl font-bold tracking-tight text-on-surface">
-                  Past Adventures
-                </h2>
-                <p class="text-on-surface-variant">
-                  Relive your memories and rebook favorites.
-                </p>
+
+            <!-- Trust Signals -->
+            <div
+              class="bg-surface-container-low p-4 flex items-center justify-center gap-4 border-t border-outline-variant/30"
+            >
+              <div
+                class="flex items-center gap-1 text-[10px] font-bold text-outline uppercase"
+              >
+                <span class="material-symbols-outlined text-sm"
+                  >verified_user</span
+                >
+                Secure Checkout
+              </div>
+              <div
+                class="flex items-center gap-1 text-[10px] font-bold text-outline uppercase"
+              >
+                <span class="material-symbols-outlined text-sm"
+                  >support_agent</span
+                >
+                24/7 Support
               </div>
             </div>
-            <div class="space-y-4">
-              <div class="skeleton title"></div>
-              <!-- History Item 1 -->
-
-              <!-- History Item 2 -->
-            </div>
-          </section>
-        </div>
-
-        <!-- Support Card -->
-        <div
-          class="lg:col-span-1 space-y-6 bg-secondary-container text-on-secondary-container p-6 rounded-xl relative overflow-hidden group"
-        >
-          <span
-            class="material-symbols-outlined absolute -bottom-4 -right-4 text-8xl opacity-10 group-hover:scale-110 transition-transform"
-            data-icon="support_agent"
-            >support_agent</span
-          >
-          <h4 class="font-bold text-lg mb-2">Need Help?</h4>
-          <p class="text-sm opacity-90 mb-4">
-            Your dedicated concierge is available 24/7 for Platinum members.
-          </p>
-          <button
-            class="bg-on-secondary-container text-secondary-container px-4 py-2 rounded-lg text-sm font-bold active:scale-95 transition-all"
-          >
-            Chat Now
-          </button>
+          </div>
         </div>
       </div>
     </main>
@@ -449,4 +459,4 @@
     </aside>
   </body>
 </html>
-<script src="./js/dashboard.js"></script>
+<script src="./js/booking.js"></script>

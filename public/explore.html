@@ -1,11 +1,10 @@
-!
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Search Results - SkyWay Travels</title>
+    <title>Explore - SkyWay Travels</title>
     <link href="output.css" rel="stylesheet" />
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-app-compat.js"></script>
@@ -61,7 +60,11 @@
         height: 150px;
         margin-bottom: 15px;
       }
-
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
       @keyframes pulse {
         0% {
           opacity: 0.6;
@@ -79,6 +82,7 @@
     <!-- TopNavBar -->
     <nav
       class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm font-['Plus_Jakarta_Sans'] antialiased"
+      id="nav"
     >
       <div
         class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto"
@@ -466,7 +470,71 @@
       <div
         class="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"
       ></div>
+      <!-- mobile nav -->
+
+      <aside
+        class="fixed duration-300 ease-in top-0 z-50 h-screen w-screen left-full"
+        id="menuBar"
+      >
+        <div class="bg-surface-container-low p-2 h-full w-screen">
+          <div class="text-end">
+            >
+            <button id="closeMenu">
+              <span class="material-symbols-outlined" style="font-size: 36px">
+                close
+              </span>
+            </button>
+          </div>
+          <nav class="flex flex-col space-y-1">
+            <a
+              class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
+              href="#"
+            >
+              <span class="material-symbols-outlined"> travel_explore </span>
+
+              <span>Explore</span>
+            </a>
+            <a
+              class="flex items-center gap-3 px-4 py-3 bg-surface-container-lowest text-primary font-bold rounded-lg shadow-sm"
+              href="#"
+            >
+              <span class="material-symbols-outlined"> airplane_ticket </span>
+
+              <span>Booking</span>
+            </a>
+            <a
+              class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
+              href="#"
+            >
+              <span class="material-symbols-outlined">
+                assistant_navigation
+              </span>
+
+              <span>Destinations</span>
+            </a>
+            <button
+              class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all goToProfileBtn"
+              id=""
+            >
+              <span class="material-symbols-outlined" data-icon="person"
+                >person</span
+              >
+              <span>Profile</span>
+            </button>
+            <div class="h-px bg-outline-variant/20 my-2 mx-4"></div>
+            <button
+              class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/20 rounded-lg transition-all"
+              onclick="logOutUser()"
+            >
+              <span class="material-symbols-outlined" data-icon="logout"
+                >logout</span
+              >
+              <span>Sign Out</span>
+            </button>
+          </nav>
+        </div>
+      </aside>
     </div>
   </body>
 </html>
-<script src="./js/search.js"></script>
+<script src="./js/explore.js"></script>
