@@ -4,14 +4,9 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Flight Details - SkyWay Travels</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Manrope:wght@400;500;700&amp;display=swap"
       rel="stylesheet"
     />
     <link
@@ -24,706 +19,431 @@
         theme: {
           extend: {
             colors: {
-              "on-background": "#191c1e",
-              "inverse-surface": "#2d3133",
-              "on-tertiary-container": "#ffcda8",
-              "on-secondary-fixed-variant": "#2a4968",
-              "inverse-on-surface": "#eff1f3",
-              "surface-variant": "#e0e3e5",
-              background: "#f7f9fb",
-              "surface-bright": "#f7f9fb",
-              "surface-container-high": "#e6e8ea",
-              tertiary: "#6c3800",
-              "on-tertiary": "#ffffff",
-              "on-error-container": "#93000a",
-              "on-primary": "#ffffff",
-              "surface-container-highest": "#e0e3e5",
-              surface: "#f7f9fb",
-              "surface-container": "#eceef0",
-              "on-surface": "#191c1e",
-              "inverse-primary": "#a6c8ff",
-              "tertiary-container": "#8f4c00",
-              "primary-fixed-dim": "#a6c8ff",
-              "on-tertiary-fixed": "#2f1500",
-              "secondary-container": "#b9d7fd",
-              "on-secondary-fixed": "#001d35",
-              "on-error": "#ffffff",
               "primary-fixed": "#d5e3ff",
+              "on-secondary-fixed-variant": "#2a4968",
               "secondary-fixed": "#d1e4ff",
-              "surface-container-low": "#f2f4f6",
+              "inverse-on-surface": "#eff1f3",
+              "outline-variant": "#c1c6d3",
+              primary: "#004685",
+              "tertiary-fixed": "#ffdcc3",
+              outline: "#727783",
+              "on-primary-fixed-variant": "#004786",
+              background: "#f7f9fb",
+              "on-primary-fixed": "#001c3b",
+              "surface-container-lowest": "#ffffff",
+              error: "#ba1a1a",
+              "primary-container": "#075ead",
               "on-tertiary-fixed-variant": "#6e3900",
               "tertiary-fixed-dim": "#ffb77d",
-              "secondary-fixed-dim": "#abc9ef",
-              "outline-variant": "#c1c6d3",
-              "on-secondary-container": "#405e7e",
+              "on-background": "#191c1e",
+              "primary-fixed-dim": "#a6c8ff",
               "on-secondary": "#ffffff",
-              "on-primary-fixed": "#001c3b",
-              primary: "#004685",
-              secondary: "#436182",
-              "primary-container": "#075ead",
-              "on-primary-fixed-variant": "#004786",
-              error: "#ba1a1a",
-              outline: "#727783",
-              "surface-container-lowest": "#ffffff",
-              "tertiary-fixed": "#ffdcc3",
-              "error-container": "#ffdad6",
-              "surface-tint": "#095fae",
-              "surface-dim": "#d8dadc",
-              "on-primary-container": "#c2d8ff",
+              "on-error": "#ffffff",
+              "tertiary-container": "#8f4c00",
+              "inverse-surface": "#2d3133",
+              "inverse-primary": "#a6c8ff",
               "on-surface-variant": "#414751",
+              "secondary-fixed-dim": "#abc9ef",
+              "on-tertiary-container": "#ffcda8",
+              tertiary: "#6c3800",
+              "surface-dim": "#d8dadc",
+              "on-tertiary": "#ffffff",
+              "on-primary-container": "#c2d8ff",
+              "surface-container-low": "#f2f4f6",
+              "error-container": "#ffdad6",
+              "surface-bright": "#f7f9fb",
+              "on-primary": "#ffffff",
+              "on-secondary-container": "#405e7e",
+              "surface-variant": "#e0e3e5",
+              "surface-container": "#eceef0",
+              "on-tertiary-fixed": "#2f1500",
+              "on-error-container": "#93000a",
+              "surface-tint": "#095fae",
+              surface: "#f7f9fb",
+              "surface-container-highest": "#e0e3e5",
+              "on-surface": "#191c1e",
+              "on-secondary-fixed": "#001d35",
+              "surface-container-high": "#e6e8ea",
+              "secondary-container": "#b9d7fd",
+              secondary: "#436182",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
             },
             fontFamily: {
               headline: ["Plus Jakarta Sans"],
               body: ["Manrope"],
               label: ["Manrope"],
             },
-            borderRadius: {
-              DEFAULT: "0.5rem",
-              lg: "0.75rem",
-              xl: "1rem",
-              full: "9999px",
-            },
           },
         },
       };
     </script>
     <style>
+      @media print {
+        body {
+          background: white;
+          padding: 0 !important;
+        }
+        .print-hidden {
+          display: none !important;
+        }
+        .a4-container {
+          box-shadow: none !important;
+          margin: 0 !important;
+          width: 210mm !important;
+          height: 297mm !important;
+          transform: none !important;
+          border: none !important;
+        }
+        .ticket-scaler {
+          padding: 0 !important;
+          height: auto !important;
+        }
+      }
       .material-symbols-outlined {
         font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-        vertical-align: middle;
       }
-      body {
-        font-family: "Manrope", sans-serif;
+      .dashed-line {
+        background-image: linear-gradient(
+          to right,
+          #c1c6d3 50%,
+          rgba(255, 255, 255, 0) 0%
+        );
+        background-position: bottom;
+        background-size: 10px 1px;
+        background-repeat: repeat-x;
       }
-      h1,
-      h2,
-      h3,
-      .font-headline {
-        font-family: "Plus Jakarta Sans", sans-serif;
+
+      /* Scaling Logic */
+      .ticket-scaler {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        padding: 2rem 1rem;
+        min-height: 100vh;
+      }
+      .a4-container {
+        transform-origin: top center;
+        flex-shrink: 0;
+        width: 210mm;
+        min-height: 297mm;
+      }
+      @media (max-width: 210mm) {
+        .a4-container {
+          /* Scale based on viewport width: (100vw - padding) / 210mm */
+          transform: scale(calc((100vw - 2rem) / 210 * 3.7795275591));
+        }
+        .ticket-scaler {
+          /* Adjust container height to match scaled ticket */
+          height: calc(297mm * ((100vw - 2rem) / 210 * 3.7795275591) + 4rem);
+        }
       }
     </style>
   </head>
-  <body class="bg-surface text-on-surface antialiased">
-    <!-- Top Navigation Bar -->
-    <header
-      class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none font-['Plus_Jakarta_Sans'] antialiased"
-    >
+  <body class="bg-surface-container font-body text-on-surface">
+    <!-- Scaling Wrapper -->
+    <div class="ticket-scaler">
+      <!-- Document Wrapper (A4) -->
       <div
-        class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto"
+        class="a4-container bg-white shadow-2xl flex flex-col overflow-hidden relative border border-outline-variant/10"
       >
-        <div
-          class="text-2xl font-bold tracking-tight text-blue-900 dark:text-blue-100"
+        <!-- Header Section -->
+        <header
+          class="bg-white border-b-0 w-full flex justify-between items-center px-12 py-10 max-w-[210mm] mx-auto"
         >
-          SkyWay Travels
-        </div>
-        <nav class="hidden md:flex space-x-8">
-          <a
-            class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-            href="#"
-            >Explore</a
-          >
-          <a
-            class="text-blue-700 dark:text-blue-300 font-semibold border-b-2 border-blue-700 dark:border-blue-300 pb-1"
-            href="#"
-            >Bookings</a
-          >
-          <a
-            class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-            href="#"
-            >Destinations</a
-          >
-          <a
-            class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-            href="#"
-            >Deals</a
-          >
-        </nav>
-        <div class="flex items-center space-x-4">
-          <button
-            class="px-4 py-2 text-slate-600 dark:text-slate-400 font-medium hover:bg-slate-100/50 dark:hover:bg-slate-800/50 rounded-lg transition-all active:scale-95"
-          >
-            Login
-          </button>
-          <button
-            class="px-5 py-2.5 bg-primary text-on-primary rounded-lg font-semibold shadow-sm hover:bg-primary-container transition-all active:scale-95"
-          >
-            Sign Up
-          </button>
-        </div>
-      </div>
-    </header>
-    <main class="pt-24 pb-20 px-6 max-w-7xl mx-auto">
-      <!-- Route Header -->
-      <section class="mb-12">
-        <div
-          class="flex flex-col md:flex-row md:items-end justify-between gap-6"
-        >
-          <div>
-            <div class="flex items-center gap-3 mb-2">
-              <span
-                class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-bold rounded-full uppercase tracking-wider"
-                >Round Trip</span
-              >
-              <span
-                class="text-on-surface-variant flex items-center gap-1 text-sm"
-                ><span class="material-symbols-outlined text-sm"
-                  >calendar_today</span
-                >
-                Oct 12 - Oct 20</span
-              >
-            </div>
-            <h1
-              class="text-4xl md:text-5xl font-extrabold tracking-tight text-primary leading-tight"
+          <div class="flex flex-col">
+            <span
+              class="text-2xl font-extrabold text-[#004685] uppercase tracking-tighter font-headline"
+              >SkyWay Travels</span
             >
-              London to Tokyo
+            <span
+              class="text-xs uppercase tracking-widest text-slate-400 font-label mt-1"
+              >Global Premium Airways</span
+            >
+          </div>
+          <div class="text-right">
+            <h1
+              class="text-2xl font-black text-primary font-headline tracking-tight uppercase"
+            >
+              E-TICKET / BOARDING PASS
             </h1>
-            <p class="text-on-surface-variant text-lg mt-2">
-              Heathrow (LHR) <span class="mx-2 text-outline">→</span> Haneda
-              (HND)
+            <p class="text-xs font-label text-slate-500 tracking-widest mt-1">
+              CONFIRMED BOOKING
             </p>
           </div>
-          <div class="flex gap-4">
-            <button
-              class="p-3 rounded-full bg-surface-container-low text-primary hover:bg-surface-container-high transition-all"
-            >
-              <span class="material-symbols-outlined">share</span>
-            </button>
-            <button
-              class="p-3 rounded-full bg-surface-container-low text-primary hover:bg-surface-container-high transition-all"
-            >
-              <span class="material-symbols-outlined">favorite</span>
-            </button>
-          </div>
-        </div>
-      </section>
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <!-- Left Column: Flight Details & Options -->
-        <div class="lg:col-span-2 space-y-10">
-          <!-- Flight Segments Breakdown -->
-          <div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm">
-            <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
-              <span class="material-symbols-outlined text-primary"
-                >flight_takeoff</span
-              >
-              Outbound Flight
-            </h2>
-            <div class="relative pl-8">
-              <!-- Connecting Line -->
-              <div
-                class="absolute left-[11px] top-2 bottom-2 w-0.5 bg-outline-variant/30 border-l-2 border-dashed border-outline-variant"
-              ></div>
-              <!-- Segment 1 -->
-              <div class="relative mb-12">
-                <div
-                  class="absolute -left-[27px] top-1 w-4 h-4 rounded-full bg-primary ring-4 ring-surface-container-lowest"
-                ></div>
-                <div class="flex flex-col md:flex-row justify-between gap-4">
-                  <div class="flex-1">
-                    <div class="text-xl font-bold">11:35 · LHR</div>
-                    <div class="text-on-surface-variant">
-                      London Heathrow Airport, UK
-                    </div>
-                  </div>
-                  <div class="flex-1 md:text-center">
-                    <div class="text-sm font-semibold text-on-surface-variant">
-                      6h 45m
-                    </div>
-                    <div
-                      class="text-xs uppercase tracking-widest text-outline mt-1"
-                    >
-                      Flight BA005
-                    </div>
-                  </div>
-                  <div class="flex-1 md:text-right">
-                    <div class="text-xl font-bold">18:20 · DXB</div>
-                    <div class="text-on-surface-variant">
-                      Dubai International, UAE
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="mt-4 flex flex-wrap gap-4 items-center text-sm text-on-surface-variant"
-                >
-                  <span class="flex items-center gap-1"
-                    ><span class="material-symbols-outlined text-sm"
-                      >airline_seat_recline_extra</span
-                    >
-                    Airbus A380-800</span
-                  >
-                  <span class="flex items-center gap-1"
-                    ><span class="material-symbols-outlined text-sm">wifi</span>
-                    High-speed Wi-Fi</span
-                  >
-                  <span class="flex items-center gap-1"
-                    ><span class="material-symbols-outlined text-sm"
-                      >restaurant</span
-                    >
-                    Meal included</span
-                  >
-                </div>
-              </div>
-              <!-- Layover -->
-              <div
-                class="relative mb-12 py-3 px-5 bg-surface-container-low rounded-lg inline-flex items-center gap-3"
-              >
-                <span class="material-symbols-outlined text-primary"
-                  >schedule</span
-                >
-                <span class="text-sm font-medium"
-                  >2h 15m Layover in Dubai (DXB)</span
-                >
-              </div>
-              <!-- Segment 2 -->
-              <div class="relative">
-                <div
-                  class="absolute -left-[27px] bottom-1 w-4 h-4 rounded-full bg-primary ring-4 ring-surface-container-lowest"
-                ></div>
-                <div class="flex flex-col md:flex-row justify-between gap-4">
-                  <div class="flex-1">
-                    <div class="text-xl font-bold">20:35 · DXB</div>
-                    <div class="text-on-surface-variant">
-                      Dubai International, UAE
-                    </div>
-                  </div>
-                  <div class="flex-1 md:text-center">
-                    <div class="text-sm font-semibold text-on-surface-variant">
-                      9h 20m
-                    </div>
-                    <div
-                      class="text-xs uppercase tracking-widest text-outline mt-1"
-                    >
-                      Flight EK312
-                    </div>
-                  </div>
-                  <div class="flex-1 md:text-right">
-                    <div class="text-xl font-bold">09:55 (+1) · HND</div>
-                    <div class="text-on-surface-variant">
-                      Haneda Airport, Tokyo, JP
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="mt-4 flex flex-wrap gap-4 items-center text-sm text-on-surface-variant"
-                >
-                  <span class="flex items-center gap-1"
-                    ><span class="material-symbols-outlined text-sm"
-                      >airline_seat_recline_extra</span
-                    >
-                    Boeing 777-300ER</span
-                  >
-                  <span class="flex items-center gap-1"
-                    ><span class="material-symbols-outlined text-sm"
-                      >charging_station</span
-                    >
-                    Power outlets</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Seat Class Selection -->
-          <div class="space-y-6">
-            <h2 class="text-2xl font-bold px-1">Select Cabin Class</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <!-- Economy -->
-              <label
-                class="group cursor-pointer relative bg-surface-container-lowest p-6 rounded-xl ring-2 ring-transparent hover:ring-outline-variant transition-all"
-              >
-                <input checked="" class="sr-only" name="cabin" type="radio" />
-                <div class="mb-4 flex justify-between items-start">
-                  <div
-                    class="p-2 bg-surface-container rounded-lg group-hover:bg-secondary-container transition-colors"
-                  >
-                    <span class="material-symbols-outlined text-secondary"
-                      >person</span
-                    >
-                  </div>
-                  <div class="text-right">
-                    <div class="text-xs text-outline font-bold uppercase">
-                      Included
-                    </div>
-                    <div class="text-lg font-bold">£842</div>
-                  </div>
-                </div>
-                <h3 class="font-bold text-lg mb-2">Economy</h3>
-                <ul class="text-sm space-y-2 text-on-surface-variant">
-                  <li class="flex items-center gap-2">
-                    <span
-                      class="material-symbols-outlined text-base text-primary"
-                      >check</span
-                    >
-                    Standard seat
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <span
-                      class="material-symbols-outlined text-base text-primary"
-                      >check</span
-                    >
-                    1x 23kg Bag
-                  </li>
-                  <li class="flex items-center gap-2 text-outline/50">
-                    <span class="material-symbols-outlined text-base"
-                      >close</span
-                    >
-                    No Lounge access
-                  </li>
-                </ul>
-                <div
-                  class="absolute inset-0 rounded-xl border-2 border-primary opacity-0 peer-checked:opacity-100 pointer-events-none"
-                ></div>
-              </label>
-              <!-- Premium -->
-              <label
-                class="group cursor-pointer relative bg-surface-container-lowest p-6 rounded-xl ring-2 ring-transparent hover:ring-outline-variant transition-all"
-              >
-                <input class="sr-only" name="cabin" type="radio" />
-                <div class="mb-4 flex justify-between items-start">
-                  <div
-                    class="p-2 bg-surface-container rounded-lg group-hover:bg-secondary-container transition-colors"
-                  >
-                    <span class="material-symbols-outlined text-secondary"
-                      >workspace_premium</span
-                    >
-                  </div>
-                  <div class="text-right">
-                    <div class="text-xs text-outline font-bold uppercase">
-                      + £320
-                    </div>
-                    <div class="text-lg font-bold">£1,162</div>
-                  </div>
-                </div>
-                <h3 class="font-bold text-lg mb-2">Premium</h3>
-                <ul class="text-sm space-y-2 text-on-surface-variant">
-                  <li class="flex items-center gap-2">
-                    <span
-                      class="material-symbols-outlined text-base text-primary"
-                      >check</span
-                    >
-                    Wider seats
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <span
-                      class="material-symbols-outlined text-base text-primary"
-                      >check</span
-                    >
-                    2x 23kg Bags
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <span
-                      class="material-symbols-outlined text-base text-primary"
-                      >check</span
-                    >
-                    Priority boarding
-                  </li>
-                </ul>
-              </label>
-              <!-- Business -->
-              <label
-                class="group cursor-pointer relative bg-surface-container-lowest p-6 rounded-xl ring-2 ring-transparent hover:ring-outline-variant transition-all"
-              >
-                <input class="sr-only" name="cabin" type="radio" />
-                <div class="mb-4 flex justify-between items-start">
-                  <div
-                    class="p-2 bg-surface-container rounded-lg group-hover:bg-secondary-container transition-colors"
-                  >
-                    <span class="material-symbols-outlined text-secondary"
-                      >king_bed</span
-                    >
-                  </div>
-                  <div class="text-right">
-                    <div class="text-xs text-outline font-bold uppercase">
-                      + £1,240
-                    </div>
-                    <div class="text-lg font-bold">£2,082</div>
-                  </div>
-                </div>
-                <h3 class="font-bold text-lg mb-2">Business</h3>
-                <ul class="text-sm space-y-2 text-on-surface-variant">
-                  <li class="flex items-center gap-2">
-                    <span
-                      class="material-symbols-outlined text-base text-primary"
-                      >check</span
-                    >
-                    Lie-flat beds
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <span
-                      class="material-symbols-outlined text-base text-primary"
-                      >check</span
-                    >
-                    Chef-led dining
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <span
-                      class="material-symbols-outlined text-base text-primary"
-                      >check</span
-                    >
-                    Lounge access
-                  </li>
-                </ul>
-              </label>
-            </div>
-          </div>
-          <!-- Extras Bento Grid -->
-          <div class="space-y-6">
-            <h2 class="text-2xl font-bold px-1">Tailor Your Trip</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div
-                class="bg-surface-container-lowest p-6 rounded-xl flex flex-col justify-between"
-              >
-                <div>
-                  <span
-                    class="material-symbols-outlined text-primary mb-4 block"
-                    >health_and_safety</span
-                  >
-                  <h4 class="font-bold">Travel Insurance</h4>
-                  <p class="text-sm text-on-surface-variant mt-1">
-                    Full medical &amp; cancellation coverage.
-                  </p>
-                </div>
-                <button
-                  class="mt-4 text-primary text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all"
-                >
-                  Add for £45
-                  <span class="material-symbols-outlined text-sm">add</span>
-                </button>
-              </div>
-              <div
-                class="bg-surface-container-lowest p-6 rounded-xl flex flex-col justify-between"
-              >
-                <div>
-                  <span
-                    class="material-symbols-outlined text-primary mb-4 block"
-                    >luggage</span
-                  >
-                  <h4 class="font-bold">Extra Baggage</h4>
-                  <p class="text-sm text-on-surface-variant mt-1">
-                    Pre-book 20kg extra at 30% discount.
-                  </p>
-                </div>
-                <button
-                  class="mt-4 text-primary text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all"
-                >
-                  Add for £60
-                  <span class="material-symbols-outlined text-sm">add</span>
-                </button>
-              </div>
-              <div
-                class="bg-surface-container-lowest p-6 rounded-xl flex flex-col justify-between"
-              >
-                <div>
-                  <span
-                    class="material-symbols-outlined text-primary mb-4 block"
-                    >restaurant</span
-                  >
-                  <h4 class="font-bold">Gourmet Meals</h4>
-                  <p class="text-sm text-on-surface-variant mt-1">
-                    Upgrade your in-flight dining experience.
-                  </p>
-                </div>
-                <button
-                  class="mt-4 text-primary text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all"
-                >
-                  Add for £25
-                  <span class="material-symbols-outlined text-sm">add</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Right Column: Summary Sticky Card -->
-        <div class="lg:col-span-1">
+        </header>
+        <main class="px-12 flex-grow">
+          <!-- Passenger Identity Bar -->
           <div
-            class="sticky top-28 bg-surface-container-lowest rounded-xl shadow-xl shadow-on-surface/5 border border-outline-variant/10 overflow-hidden"
+            class="grid grid-cols-3 gap-8 py-8 border-y border-outline-variant/30 mt-4"
           >
-            <div class="p-6 bg-primary text-on-primary">
-              <h3 class="text-xl font-bold">Booking Summary</h3>
-              <p class="text-on-primary-container text-sm opacity-90 mt-1">
-                Review your selections
+            <div>
+              <p
+                class="text-[10px] uppercase tracking-widest text-slate-400 font-label mb-1"
+              >
+                Passenger Name
+              </p>
+              <p class="text-lg font-bold text-on-surface font-headline">
+                ALEX JOHNSON
               </p>
             </div>
-            <div class="p-6 space-y-6">
-              <div class="space-y-4">
-                <div class="flex justify-between items-start">
-                  <div>
-                    <div class="font-bold">LHR → HND</div>
-                    <div
-                      class="text-xs text-on-surface-variant uppercase tracking-tighter"
-                    >
-                      Round Trip · 1 Adult
-                    </div>
-                  </div>
-                  <div class="font-bold text-primary">£842.00</div>
-                </div>
-                <div class="flex justify-between items-start">
-                  <div>
-                    <div class="font-bold">Economy</div>
-                    <div
-                      class="text-xs text-on-surface-variant uppercase tracking-tighter"
-                    >
-                      Selected cabin
-                    </div>
-                  </div>
-                  <div class="text-sm text-on-surface-variant italic">
-                    Included
-                  </div>
-                </div>
-              </div>
-              <div class="border-t border-outline-variant/30 pt-4">
-                <div
-                  class="flex justify-between items-center text-lg font-bold text-on-surface"
+            <div>
+              <p
+                class="text-[10px] uppercase tracking-widest text-slate-400 font-label mb-1"
+              >
+                Ticket Number
+              </p>
+              <p class="text-lg font-bold text-on-surface font-headline">
+                ETK-9902344102
+              </p>
+            </div>
+            <div class="text-right">
+              <p
+                class="text-[10px] uppercase tracking-widest text-slate-400 font-label mb-1"
+              >
+                Frequent Flyer
+              </p>
+              <p class="text-lg font-bold text-primary font-headline">
+                #SW-772910
+              </p>
+            </div>
+          </div>
+          <!-- Route Visualization Section -->
+          <section class="py-12 relative">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex-1">
+                <p
+                  class="text-[10px] uppercase tracking-widest text-slate-400 font-label mb-2"
                 >
-                  <span>Total Price</span>
-                  <span class="text-2xl text-primary">£842.00</span>
-                </div>
-                <p class="text-xs text-on-surface-variant mt-1">
-                  Includes taxes, fees and carrier charges
+                  Origin
+                </p>
+                <h2
+                  class="text-5xl font-black text-primary font-headline tracking-tighter"
+                >
+                  ZRH
+                </h2>
+                <p class="text-sm font-medium text-slate-600 mt-1">
+                  Zurich Airport, Switzerland
+                </p>
+                <p class="text-2xl font-bold text-on-surface mt-4">
+                  10:30
+                  <span class="text-sm font-normal text-slate-400 uppercase"
+                    >AM</span
+                  >
+                </p>
+                <p class="text-xs text-slate-400 font-label uppercase">
+                  Departure - Dec 14, 2024
                 </p>
               </div>
-              <div class="space-y-3">
-                <button
-                  class="w-full py-4 bg-tertiary-container text-on-tertiary-container rounded-lg font-bold text-lg shadow-sm hover:brightness-110 transition-all active:scale-[0.98]"
+              <div class="flex flex-col items-center px-8 relative">
+                <div class="h-[2px] w-48 bg-outline-variant relative">
+                  <span
+                    class="material-symbols-outlined absolute left-1/2 -top-3 -translate-x-1/2 text-primary bg-white px-2"
+                    >flight</span
+                  >
+                </div>
+                <span
+                  class="text-[10px] font-bold text-primary font-label mt-4 tracking-widest uppercase"
+                  >Flight SW-402</span
                 >
-                  Continue to Booking
-                </button>
-                <p class="text-center text-xs text-on-surface-variant">
-                  By continuing you agree to the
-                  <a class="underline" href="#">Fare Rules</a>
+                <span class="text-[10px] text-slate-400 mt-1 uppercase"
+                  >12h 50m Duration</span
+                >
+              </div>
+              <div class="flex-1 text-right">
+                <p
+                  class="text-[10px] uppercase tracking-widest text-slate-400 font-label mb-2"
+                >
+                  Destination
+                </p>
+                <h2
+                  class="text-5xl font-black text-primary font-headline tracking-tighter"
+                >
+                  TYO
+                </h2>
+                <p class="text-sm font-medium text-slate-600 mt-1">
+                  Haneda Intl, Tokyo, Japan
+                </p>
+                <p class="text-2xl font-bold text-on-surface mt-4">
+                  08:20
+                  <span class="text-sm font-normal text-slate-400 uppercase"
+                    >AM
+                    <span
+                      class="text-tertiary-container text-[10px] px-1 rounded align-top"
+                      >+1 Day</span
+                    ></span
+                  >
+                </p>
+                <p class="text-xs text-slate-400 font-label uppercase">
+                  Arrival - Dec 15, 2024
                 </p>
               </div>
             </div>
-            <!-- Trust Signals -->
+          </section>
+          <!-- Boarding Details Grid -->
+          <div
+            class="bg-surface-container-low rounded-xl p-8 grid grid-cols-4 gap-6"
+          >
+            <div class="border-r border-outline-variant/30 pr-6">
+              <p
+                class="text-[10px] uppercase tracking-widest text-slate-500 font-label mb-1"
+              >
+                Cabin Class
+              </p>
+              <p class="text-sm font-bold text-primary-container">
+                Premium Economy
+              </p>
+            </div>
+            <div class="border-r border-outline-variant/30 px-6">
+              <p
+                class="text-[10px] uppercase tracking-widest text-slate-500 font-label mb-1"
+              >
+                Gate
+              </p>
+              <p class="text-3xl font-black text-on-surface font-headline">
+                B22
+              </p>
+            </div>
+            <div class="border-r border-outline-variant/30 px-6">
+              <p
+                class="text-[10px] uppercase tracking-widest text-slate-500 font-label mb-1"
+              >
+                Boarding
+              </p>
+              <p class="text-3xl font-black text-on-surface font-headline">
+                09:45
+              </p>
+            </div>
+            <div class="pl-6">
+              <p
+                class="text-[10px] uppercase tracking-widest text-slate-500 font-label mb-1"
+              >
+                Seat
+              </p>
+              <p class="text-3xl font-black text-primary font-headline">14A</p>
+            </div>
+          </div>
+          <!-- Validation & Verification Section -->
+          <div
+            class="flex mt-12 border-t border-outline-variant/30 pt-12 items-start gap-12"
+          >
             <div
-              class="bg-surface-container-low p-4 flex items-center justify-center gap-4 border-t border-outline-variant/30"
+              class="w-48 h-48 bg-white border border-outline-variant/50 p-4 rounded-lg flex items-center justify-center shrink-0"
             >
-              <div
-                class="flex items-center gap-1 text-[10px] font-bold text-outline uppercase"
-              >
-                <span class="material-symbols-outlined text-sm"
-                  >verified_user</span
-                >
-                Secure Checkout
+              <div class="w-full h-full relative overflow-hidden bg-white">
+                <img
+                  alt="scannable boarding pass qr code"
+                  class="w-full h-full object-contain"
+                  data-alt="a minimalist black and white qr code on a white background used for airline boarding verification"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIrKsZr5rEUR9IVzYMYVNtcSshzHiOuiGccxjrMJBrYnUXFdajQanorfzCMFDvYfqRAleAcp09v3TwWpgClFWlHhmrPMZEsKBx-Bxt97ZqSYLNWEDN_JSBtLDRnAK2d1-kPNrPC0keFZoa0h-9vW5HUNpEndjusAgeM244-N_ly8y3lCyrZl0NiR2wAeKRd6-lYyuKGFsHfV2HATOz2DZoJNe8pK_0tE0c2ZKnIlSLUwEDn-Ebz0ThzSIQvGmkjiWRUonqJU88LHPu"
+                />
+              </div>
+            </div>
+            <div class="flex-grow space-y-8">
+              <div class="grid grid-cols-2 gap-8">
+                <div>
+                  <h3
+                    class="text-[10px] font-bold text-primary font-label uppercase tracking-widest mb-3 flex items-center gap-2"
+                  >
+                    <span class="material-symbols-outlined text-sm"
+                      >luggage</span
+                    >
+                    Baggage Allowance
+                  </h3>
+                  <ul
+                    class="text-xs text-on-surface-variant space-y-1 font-medium"
+                  >
+                    <li>• Checked: 2 x 23kg (Max)</li>
+                    <li>• Carry-on: 1 x 10kg + Personal item</li>
+                    <li>• Excess baggage fees apply at counter</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3
+                    class="text-[10px] font-bold text-primary font-label uppercase tracking-widest mb-3 flex items-center gap-2"
+                  >
+                    <span class="material-symbols-outlined text-sm">info</span>
+                    Essential Notes
+                  </h3>
+                  <ul
+                    class="text-xs text-on-surface-variant space-y-1 font-medium"
+                  >
+                    <li>• Check-in closes 60 mins before departure</li>
+                    <li>• Valid Passport and Visa required</li>
+                    <li>• Gate closes 20 mins before departure</li>
+                  </ul>
+                </div>
               </div>
               <div
-                class="flex items-center gap-1 text-[10px] font-bold text-outline uppercase"
+                class="bg-primary/5 p-6 rounded-lg border-l-4 border-primary"
               >
-                <span class="material-symbols-outlined text-sm"
-                  >support_agent</span
+                <p
+                  class="text-[10px] font-bold text-primary font-label uppercase tracking-widest mb-1"
                 >
-                24/7 Support
+                  Security Notice
+                </p>
+                <p class="text-xs text-on-surface-variant leading-relaxed">
+                  Please ensure you have all travel documents ready for
+                  inspection at the security checkpoint and boarding gate. This
+                  document must be presented along with a valid
+                  government-issued photo ID.
+                </p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </main>
-    <!-- Footer -->
-    <footer
-      class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 font-['Manrope'] text-sm"
-    >
-      <div
-        class="grid grid-cols-2 md:grid-cols-4 gap-8 px-6 py-12 max-w-7xl mx-auto"
-      >
-        <div class="col-span-2 md:col-span-1">
-          <div class="text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">
-            SkyWay Travels
-          </div>
-          <p class="text-slate-500 dark:text-slate-400 max-w-xs">
-            Your personal digital concierge for seamless global exploration and
-            premium travel experiences.
+        </main>
+        <!-- Footer Section -->
+        <footer
+          class="flex flex-col items-center justify-center text-center px-12 max-w-[210mm] mx-auto w-full mt-auto pb-8 bg-transparent"
+        >
+          <div class="dashed-line w-full h-[1px] mb-8"></div>
+          <p
+            class="font-['Manrope'] text-[10px] uppercase tracking-widest text-slate-400 mb-4"
+          >
+            © 2024 SkyWay Travels. This document is a valid electronic ticket.
+            Subject to carrier conditions of carriage.
           </p>
-        </div>
-        <div>
-          <h4
-            class="font-bold text-blue-800 dark:text-blue-400 mb-4 uppercase tracking-widest text-xs"
-          >
-            Company
-          </h4>
-          <ul class="space-y-2">
-            <li>
-              <a
-                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-                href="#"
-                >About Us</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-                href="#"
-                >Careers</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-                href="#"
-                >Contact</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4
-            class="font-bold text-blue-800 dark:text-blue-400 mb-4 uppercase tracking-widest text-xs"
-          >
-            Legal
-          </h4>
-          <ul class="space-y-2">
-            <li>
-              <a
-                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-                href="#"
-                >Privacy Policy</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-                href="#"
-                >Terms of Service</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4
-            class="font-bold text-blue-800 dark:text-blue-400 mb-4 uppercase tracking-widest text-xs"
-          >
-            Support
-          </h4>
-          <ul class="space-y-2">
-            <li>
-              <a
-                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-                href="#"
-                >Help Center</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-                href="#"
-                >Booking Guide</a
-              >
-            </li>
-          </ul>
-        </div>
+          <div class="flex gap-6">
+            <a
+              class="font-['Manrope'] text-[10px] uppercase tracking-widest text-slate-400 hover:underline"
+              href="#"
+              >Support</a
+            >
+            <a
+              class="font-['Manrope'] text-[10px] uppercase tracking-widest text-slate-400 hover:underline"
+              href="#"
+              >Privacy Policy</a
+            >
+            <a
+              class="font-['Manrope'] text-[10px] uppercase tracking-widest text-slate-400 hover:underline"
+              href="#"
+              >Carriage Terms</a
+            >
+          </div>
+          <div class="mt-8 flex items-center gap-4 text-slate-200">
+            <span class="text-[8px] font-mono"
+              >DOCUMENT AUTHENTICITY CODE: 882-XZ-442-9910-AQW</span
+            >
+          </div>
+        </footer>
+        <!-- Print Decoration -->
+        <div
+          class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16 pointer-events-none"
+        ></div>
       </div>
-      <div
-        class="max-w-7xl mx-auto px-6 py-6 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center opacity-80"
-      >
-        <p class="text-slate-500 dark:text-slate-400">
-          © 2024 SkyWay Travels. All rights reserved.
-        </p>
-        <div class="flex gap-4">
-          <span class="material-symbols-outlined text-slate-400"
-            >social_leaderboard</span
-          >
-          <span class="material-symbols-outlined text-slate-400">public</span>
-          <span class="material-symbols-outlined text-slate-400">camera</span>
-        </div>
-      </div>
-    </footer>
+    </div>
+    <!-- Print Floating Action -->
+    <button
+      class="print-hidden fixed bottom-8 right-8 bg-primary text-white p-4 rounded-full shadow-xl hover:scale-105 transition-transform flex items-center gap-2 z-50"
+      onclick="window.print()"
+    >
+      <span class="material-symbols-outlined">print</span>
+      <span class="font-bold pr-2">Print E-Ticket</span>
+    </button>
   </body>
 </html>

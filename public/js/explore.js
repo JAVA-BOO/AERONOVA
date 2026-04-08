@@ -43,171 +43,41 @@ signUpBtn.addEventListener("click", () => {
 });
 
 const nav = document.getElementById("nav");
+const navLogged = document.getElementById("navLogged");
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in -> show logged-in nav, hide guest nav
+    nav.classList.add("hidden");
+    navLogged.classList.remove("hidden");
+
+
+    let toggleBtn = document.getElementById("toggleBtn");
+    let menuBar = document.getElementById("menuBar");
+    let closeMenu = document.getElementById("closeMenu");
+    let profileIcon = document.getElementById("profileIcon");
+    let userIcon = document.getElementById("userIcon");
+
+    toggleBtn.addEventListener("click", () => {
+      menuBar.classList.remove("left-full");
+      menuBar.classList.add("left-0");
+    });
+
+    closeMenu.addEventListener("click", () => {
+      menuBar.classList.remove("left-0");
+      menuBar.classList.add("left-full");
+    });
+
+    profileIcon.addEventListener("click", () => {
+      userIcon.classList.toggle("hidden");
+    });
+  } else {
+    // User is signed out -> show guest nav, hide logged-in nav
+    nav.classList.remove("hidden");
+    navLogged.classList.add("hidden");
+  }
+});
 if (localStorage.getItem("fromDashboard")) {
-  nav.innerHTML = ` <div
-        class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto"
-      >
-        <div
-          class="text-2xl font-bold tracking-tight text-blue-900 dark:text-blue-100"
-        >
-          SkyWay Travels
-        </div>
-        <nav class="hidden md:flex items-center gap-8">
-          <a
-            class="text-blue-700 dark:text-blue-300 font-semibold border-b-2 border-blue-700 dark:border-blue-300 pb-1"
-            href="#"
-            id="exploreBtn"
-            >Explore</a
-          >
-          <a
-             class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-            href="#"
-            >Bookings</a
-          >
-          <a
-            class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-            href="#"
-            >Destinations</a
-          >
-        </nav>
-        <div class="flex items-center gap-4">
-          <div class="relative">
-            <button
-              class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary/20 hidden md:flex"
-              id="profileIcon"
-            >
-              <img
-                alt="User profile avatar"
-                data-alt="Close up portrait of a professional male user"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKLbyYxUu77gyT47KaGDcoRHnCxGtAIvwLFE0Bv_1MMDX5tV_LsX6yWOHFgGV9uWJgG7VetgUY4oMtB97euInLBNZGyWTH9voDLAy4CujcKkXnXyh0cphAWdh9-q7qmSZF0qNHowyHKj2pq95JCVyavZjldHVvEBcR3EKFyUIq0RNO5z9LlPSqzM2kwk8mZtGId3USdM0IyAuWHpr7_X20ANAe7MamWbb53sIpE5Jb--XnJSrf6tF1DoSCdoB5q2A5yTdWB6cc_pBv"
-              />
-            </button>
-            <aside
-              class="absolute z-50 rounded-4xl top-full right-0 hidden"
-              id="userIcon"
-            >
-              <div class="bg-surface-container-low p-2 rounded-4xl">
-                <nav class="flex flex-col">
-                  <button
-                    class="flex items-center px-2 py-1 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all goToProfileBtn"
-                    href="#"
-                    id="lgProfile"
-                  >
-                    <span class="material-symbols-outlined" data-icon="person"
-                      >person</span
-                    >
-                    <span>Profile</span>
-                  </button>
-                  <div class="h-px bg-outline-variant/20 my-1 mx-2 px-0"></div>
-                  <button
-                    class="flex items-center gap-1 px-2 py-3 text-error hover:bg-error-container/20 rounded-lg transition-all"
-                    href=""
-                    onclick="logOutUser()"
-                  >
-                    <span class="material-symbols-outlined" data-icon="logout"
-                      >logout</span
-                    >
-                    <span class="whitespace-nowrap">Sign Out</span>
-                  </button>
-                </nav>
-              </div>
-            </aside>
-          </div>
-
-          <button class="flex md:hidden" id="toggleBtn">
-            <span
-              class="hover:bg-surface-container-high flex material-symbols-outlined"
-            >
-              menu
-            </span>
-          </button>
-        </div>
-      </div>
-      
-        <!-- mobile nav -->
-
-      <aside
-        class="fixed duration-300 ease-in top-0 z-50 h-screen w-screen left-full"
-        id="menuBar"
-      >
-        <div class="bg-surface-container-low p-2 h-full w-screen">
-          <div class="text-end">
-            >
-            <button id="closeMenu">
-              <span class="material-symbols-outlined" style="font-size: 36px">
-                close
-              </span>
-            </button>
-          </div>
-          <nav class="flex flex-col space-y-1">
-            <a
-              class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
-              href="#"
-            >
-              <span class="material-symbols-outlined"> travel_explore </span>
-
-              <span>Explore</span>
-            </a>
-            <a
-              class="flex items-center gap-3 px-4 py-3 bg-surface-container-lowest text-primary font-bold rounded-lg shadow-sm"
-              href="#"
-            >
-              <span class="material-symbols-outlined"> airplane_ticket </span>
-
-              <span>Booking</span>
-            </a>
-            <a
-              class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all"
-              href="#"
-            >
-              <span class="material-symbols-outlined">
-                assistant_navigation
-              </span>
-
-              <span>Destinations</span>
-            </a>
-            <button
-              class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all goToProfileBtn"
-              id=""
-            >
-              <span class="material-symbols-outlined" data-icon="person"
-                >person</span
-              >
-              <span>Profile</span>
-            </button>
-            <div class="h-px bg-outline-variant/20 my-2 mx-4"></div>
-            <button
-              class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/20 rounded-lg transition-all"
-              onclick="logOutUser()"
-            >
-              <span class="material-symbols-outlined" data-icon="logout"
-                >logout</span
-              >
-              <span>Sign Out</span>
-            </button>
-          </nav>
-        </div>
-      </aside>`;
-
-  let toggleBtn = document.getElementById("toggleBtn");
-  let menuBar = document.getElementById("menuBar");
-  let closeMenu = document.getElementById("closeMenu");
-  let profileIcon = document.getElementById("profileIcon");
-  let userIcon = document.getElementById("userIcon");
-
-  toggleBtn.addEventListener("click", () => {
-    menuBar.classList.remove("left-full");
-    menuBar.classList.add("left-0");
-  });
-
-  closeMenu.addEventListener("click", () => {
-    menuBar.classList.remove("left-0");
-    menuBar.classList.add("left-full");
-  });
-
-  profileIcon.addEventListener("click", () => {
-    userIcon.classList.toggle("hidden");
-  });
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -387,7 +257,7 @@ async function bookFlights(flightId, classType) {
   }
 
   try {
-    const pendingRef = await db.collection("pendingBookings").add({
+    const docRef = await db.collection("pendingBookings").add({
       userId: user.uid,
       flightId: flightId,
       classType: classType,
@@ -395,9 +265,10 @@ async function bookFlights(flightId, classType) {
       createdAt: new Date(),
     });
 
-    alert("Booking Created", pendingRef.id);
+    alert("Booking Created Successfully");
+    console.log(docRef.id);
 
-    window.location.href = "../booking.html?id=${pendingRef.id}";
+    window.location.href = `./booking.html?id=${encodeURIComponent(docRef.id)}`;
   } catch (error) {
     console.log(error);
     alert("Error Creating booking");

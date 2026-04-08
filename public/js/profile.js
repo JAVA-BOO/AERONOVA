@@ -68,7 +68,7 @@ saveProfileChanges.addEventListener("click", (e) => {
           displayName: fullNameInput.value.trim(),
         });
         await db
-          .collection("user")
+          .collection("users")
           .doc(user.uid)
           .set(
             {
@@ -120,7 +120,7 @@ function loadProfileUser() {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/v8/firebase.User
 
-      const userDoc = await db.collection("user").doc(user.uid).get();
+      const userDoc = await db.collection("users").doc(user.uid).get();
       const userData = userDoc.data();
       let fullNameTag = document.querySelectorAll(".fullNameTag");
       let emailTag = document.querySelectorAll(".emailTag");

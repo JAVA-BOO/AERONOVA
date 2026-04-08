@@ -189,11 +189,11 @@
               >
             </div>
             <h1
-              class="text-4xl md:text-5xl font-extrabold tracking-tight text-primary leading-tight"
+              class="text-4xl md:text-5xl font-extrabold tracking-tight text-primary leading-tight flightHead"
             >
               Loading...
             </h1>
-            <p class="text-on-surface-variant text-lg mt-2">
+            <p class="text-on-surface-variant text-lg mt-2 scheduleTag">
               Point A <span class="mx-2 text-outline">→</span> Point B
             </p>
           </div>
@@ -224,16 +224,13 @@
               >
               Outbound Flight
             </h2>
+            <div class="relative pl-8 flightDetails">
+              <div
+                class="relative z-10 h-full justify-between skeleton title"
+              ></div>
+            </div>
+          </div>
 
-            <div
-              class="relative z-10 h-full justify-between skeleton title"
-            ></div>
-          </div>
-          <!-- Seat Class Selection -->
-          <div class="space-y-6">
-            <h2 class="text-2xl font-bold px-1">Select Cabin Class</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
-          </div>
           <!-- Extras features-->
           <div class="space-y-6">
             <h2 class="text-2xl font-bold px-1">Tailor Your Trip</h2>
@@ -245,7 +242,7 @@
         <!-- Right Column: Summary Sticky Card -->
         <div class="lg:col-span-1">
           <div
-            class="sticky top-28 bg-surface-container-lowest rounded-xl shadow-xl shadow-on-surface/5 border border-outline-variant/10 overflow-hidden"
+            class="sticky top-28 bg-surface-container-lowest rounded-xl shadow-xl shadow-on-surface/5 border border-outline-variant/10 overflow-hidden flightBookingDetails"
           >
             <div class="p-6 bg-primary text-on-primary">
               <h3 class="text-xl font-bold">Booking Summary</h3>
